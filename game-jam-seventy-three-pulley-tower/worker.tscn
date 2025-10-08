@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dujmi2i7ajlf3"]
+
+[ext_resource type="Texture2D" uid="uid://cq8c5xe6k666c" path="res://GodotImages/New Piskel-1.png.png" id="1_2ienw"]
+[ext_resource type="Script" path="res://worker.gd" id="1_ha3ph"]
+[ext_resource type="Texture2D" uid="uid://x4qkmwadrj6u" path="res://GodotImages/New Piskel-2.png.png" id="2_v8p8c"]
+[ext_resource type="Texture2D" uid="uid://d0771w2dlsfmk" path="res://GodotImages/New Piskel-3.png.png" id="3_c2a06"]
+[ext_resource type="PackedScene" uid="uid://47ir7rb6yhlb" path="res://texture_left_button.tscn" id="6_ouj6e"]
+[ext_resource type="PackedScene" uid="uid://c5qwvti84yb5k" path="res://texture_right_button.tscn" id="6_t4iyi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3meh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ienw")
+}],
+"loop": true,
+"name": &"steady",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v8p8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c2a06")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7ts7"]
+size = Vector2(15, 28)
+
+[node name="Worker" type="Area2D"]
+position = Vector2(130, 58)
+scale = Vector2(3, 3)
+script = ExtResource("1_ha3ph")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p3meh")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_r7ts7")
+
+[node name="TextureLeftButton" parent="." instance=ExtResource("6_ouj6e")]
+offset_left = -37.6667
+offset_top = -16.6667
+offset_right = -5.66667
+offset_bottom = 15.3333
+
+[node name="TextureRightButton" parent="." instance=ExtResource("6_t4iyi")]
+offset_left = 9.66667
+offset_top = -17.3333
+offset_right = 41.6667
+offset_bottom = 14.6667
+metadata/_edit_group_ = true
+
+[connection signal="pressed" from="TextureLeftButton" to="." method="_on_texture_left_button_pressed"]
+[connection signal="pressed" from="TextureRightButton" to="." method="_on_texture_right_button_pressed"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://47ir7rb6yhlb"]
+
+[ext_resource type="Texture2D" uid="uid://bgkwc7anqcub" path="res://GodotImages/left_arrow.png (2).png" id="1_eg6le"]
+[ext_resource type="Texture2D" uid="uid://cd7eor2cswy0p" path="res://GodotImages/left_arrow_pressed.png (2).png" id="2_8sh74"]
+
+[node name="TextureLeftButton" type="TextureButton"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("1_eg6le")
+texture_pressed = ExtResource("2_8sh74")

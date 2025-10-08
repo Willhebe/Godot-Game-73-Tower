@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://druwp00p2ntgp"]
+
+[ext_resource type="Texture2D" uid="uid://bcn76md2br3q4" path="res://GodotImages/gold_key_sprite_0.png" id="1_ogerw"]
+[ext_resource type="Texture2D" uid="uid://bu2d27ofi6qvg" path="res://GodotImages/gold_key_sprite_1.png" id="2_xthn2"]
+[ext_resource type="Texture2D" uid="uid://dmurhjlhyk0oc" path="res://GodotImages/gold_key_sprite_2.png" id="3_wixbv"]
+[ext_resource type="Texture2D" uid="uid://hn18n2rbeiym" path="res://GodotImages/gold_key_sprite_3.png" id="4_qs50t"]
+[ext_resource type="Texture2D" uid="uid://cf11aj8jw5bjv" path="res://GodotImages/gold_key_sprite_4.png" id="5_sybm2"]
+[ext_resource type="Texture2D" uid="uid://b1sbctfbmletw" path="res://GodotImages/gold_key_sprite_5.png" id="6_d7x4u"]
+[ext_resource type="Texture2D" uid="uid://cx37du6opp6cs" path="res://GodotImages/gold_key_sprite_6.png" id="7_cq5mb"]
+[ext_resource type="Texture2D" uid="uid://h54w7ufeqfii" path="res://GodotImages/gold_key_sprite_7.png" id="8_slitx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ad4e3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ogerw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ogerw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xthn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wixbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qs50t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sybm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d7x4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cq5mb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_slitx")
+}],
+"loop": true,
+"name": &"turning",
+"speed": 5.0
+}]
+
+[node name="GoldKeyNode2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ad4e3")
+animation = &"turning"
+autoplay = "default"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccqoeku8r4ga6"]
+
+[ext_resource type="Texture2D" uid="uid://c508ne4kb8im4" path="res://GodotImages/floor.png" id="1_ga38r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppk2u"]
+size = Vector2(1052.5, 20.8333)
+
+[node name="FloorSprite" type="StaticBody2D"]
+position = Vector2(571, 575)
+scale = Vector2(1.2, 1.2)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ga38r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.416687, 0.416656)
+shape = SubResource("RectangleShape2D_ppk2u")

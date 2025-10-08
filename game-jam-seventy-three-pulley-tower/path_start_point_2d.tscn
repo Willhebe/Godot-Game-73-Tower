@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dngt250swbput"]
+
+[node name="PathStartPoint2D" type="Node2D"]

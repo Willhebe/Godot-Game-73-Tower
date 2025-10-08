@@ -1,6 +1,6 @@
-# Been long time since used GitHub - needs files cleaning up. With previous projects have given instructions
+# Godot Wild Jam 73 - prompt: Tower game
 ## Editing instructions in windows
-1. Install Godot 4.3
+1. Install Godot 4.3 - [here](https://godotengine.org/download/archive/4.3-stable/)
 ## Git clone 
 1. Install Git.
 2. Create folder to put clone in

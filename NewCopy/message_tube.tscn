@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4a3q3ooquagy"]
+
+[ext_resource type="PackedScene" uid="uid://dny8n8lpmufwo" path="res://level_number_component.tscn" id="1_26dj6"]
+[ext_resource type="Texture2D" uid="uid://cdq3aqtxvhdy3" path="res://GodotImages/MessageTubeVertical.png" id="1_wcmma"]
+[ext_resource type="PackedScene" uid="uid://dioxowur68i66" path="res://left_or_right_component.tscn" id="3_tfcyu"]
+[ext_resource type="PackedScene" uid="uid://b68j72eqjikqn" path="res://velocity_component.tscn" id="4_ectj2"]
+
+[node name="MessageTube" type="Node2D"]
+
+[node name="MessageTubeSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wcmma")
+
+[node name="LevelNumberComponent" parent="." instance=ExtResource("1_26dj6")]
+
+[node name="LeftOrRightComponent" parent="." instance=ExtResource("3_tfcyu")]
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_ectj2")]

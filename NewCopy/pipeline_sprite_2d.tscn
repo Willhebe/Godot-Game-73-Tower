@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgff7jv8ojicm"]
+
+[ext_resource type="Texture2D" uid="uid://dqivets6j05ty" path="res://GodotImages/BlackPipelineVertical.png.png" id="1_ofs7g"]
+[ext_resource type="PackedScene" uid="uid://dny8n8lpmufwo" path="res://level_number_component.tscn" id="2_tea15"]
+
+[node name="PipelineSprite2D" type="Sprite2D"]
+texture = ExtResource("1_ofs7g")
+
+[node name="LevelNumberComponent" parent="." instance=ExtResource("2_tea15")]

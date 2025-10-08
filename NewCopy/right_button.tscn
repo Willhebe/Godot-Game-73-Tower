@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2gy4ogpvmwtq"]
+
+[ext_resource type="Texture2D" uid="uid://cpkh4lbu2c0at" path="res://GodotImages/right_arrow.png (1).png" id="1_51kd2"]
+
+[node name="Right Button" type="Button"]
+offset_right = 19.0
+offset_bottom = 21.0
+icon = ExtResource("1_51kd2")
+expand_icon = true

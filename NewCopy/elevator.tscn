@@ -1,0 +1,261 @@
+[gd_scene load_steps=23 format=3 uid="uid://w8muw37seh0u"]
+
+[ext_resource type="Texture2D" uid="uid://c508ne4kb8im4" path="res://GodotImages/floor.png" id="1_utkql"]
+[ext_resource type="Script" path="res://elevator.gd" id="1_yn85s"]
+[ext_resource type="Texture2D" uid="uid://bcxevpim5udwd" path="res://GodotImages/pulley.png.png" id="2_s25cu"]
+[ext_resource type="Texture2D" uid="uid://b0emj7rhb5vkx" path="res://GodotImages/pulley2.png.png" id="4_remfy"]
+[ext_resource type="Texture2D" uid="uid://btjovi3gmxoor" path="res://GodotImages/pulley3.png.png" id="5_ittca"]
+[ext_resource type="Texture2D" uid="uid://bsxbrtvksx1w5" path="res://GodotImages/up_arrow.png (2).png" id="6_k6ga3"]
+[ext_resource type="Texture2D" uid="uid://cmsfene458gjh" path="res://GodotImages/up_arrow_pressed.png (2).png" id="7_8wkmg"]
+[ext_resource type="Texture2D" uid="uid://bkfiynk7tk0sv" path="res://GodotImages/down_arrow.png (2).png" id="8_41jk6"]
+[ext_resource type="Texture2D" uid="uid://citv3kyghvukf" path="res://GodotImages/down_arrow_pressed.png (2).png" id="9_8ypbu"]
+[ext_resource type="Texture2D" uid="uid://owa72qd2g2fd" path="res://GodotImages/elevatorCables1.png" id="10_7x3x1"]
+[ext_resource type="Texture2D" uid="uid://deiua1envy2rg" path="res://GodotImages/elevatorCables2.png" id="11_5pkpl"]
+[ext_resource type="Texture2D" uid="uid://c7op1131lcmlw" path="res://GodotImages/elevatorCables3.png" id="12_tjo0p"]
+[ext_resource type="PackedScene" uid="uid://bef04xxpkc0mi" path="res://elevator_carriage.tscn" id="13_x1ihw"]
+[ext_resource type="Texture2D" uid="uid://ds4w72bxsjnn8" path="res://GodotImages/ElevatorDoor4.png" id="14_nnh6k"]
+[ext_resource type="Texture2D" uid="uid://c48f8tlgmiio7" path="res://GodotImages/ElevatorDoor1.png" id="15_ncgjf"]
+[ext_resource type="Texture2D" uid="uid://dytqjkluagjrj" path="res://GodotImages/ElevatorDoor2.png" id="16_dqbyx"]
+[ext_resource type="Texture2D" uid="uid://dtgxc0yhe5n7o" path="res://GodotImages/ElevatorDoor3.png" id="17_u77pm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ft81"]
+size = Vector2(25, 1062.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8olvk"]
+size = Vector2(19, 1050.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c650x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s25cu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ittca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_remfy")
+}],
+"loop": true,
+"name": &"down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s25cu")
+}],
+"loop": true,
+"name": &"steady",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s25cu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_remfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ittca")
+}],
+"loop": true,
+"name": &"up",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqisl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_7x3x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tjo0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5pkpl")
+}],
+"loop": true,
+"name": &"down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_7x3x1")
+}],
+"loop": true,
+"name": &"steady",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_7x3x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5pkpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tjo0p")
+}],
+"loop": true,
+"name": &"up",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2q1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ncgjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dqbyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_u77pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nnh6k")
+}],
+"loop": false,
+"name": &"closing",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_nnh6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_u77pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dqbyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ncgjf")
+}],
+"loop": false,
+"name": &"opening",
+"speed": 3.0
+}]
+
+[node name="Elevator" type="Area2D"]
+script = ExtResource("1_yn85s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-16, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(554.5, 257.75)
+shape = SubResource("RectangleShape2D_0ft81")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(555, 251)
+rotation = 1.5708
+texture = ExtResource("1_utkql")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-28, -9)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(651.5, 259.75)
+shape = SubResource("RectangleShape2D_8olvk")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(651, 259)
+rotation = 1.5708
+texture = ExtResource("1_utkql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="PulleyAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(579, 97)
+scale = Vector2(3.6875, 2.875)
+sprite_frames = SubResource("SpriteFrames_c650x")
+animation = &"down"
+
+[node name="TexturedUpButton" type="TextureButton" parent="."]
+offset_left = 430.0
+offset_top = 60.0
+offset_right = 462.0
+offset_bottom = 92.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_k6ga3")
+texture_pressed = ExtResource("7_8wkmg")
+
+[node name="TextureDownButton" type="TextureButton" parent="."]
+offset_left = 631.0
+offset_top = 50.0
+offset_right = 671.0
+offset_bottom = 90.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("8_41jk6")
+texture_pressed = ExtResource("9_8ypbu")
+
+[node name="CablesAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(579, 182)
+scale = Vector2(3.6875, 2.875)
+sprite_frames = SubResource("SpriteFrames_uqisl")
+animation = &"down"
+
+[node name="CablesAnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(579, 268)
+scale = Vector2(3.6875, 2.875)
+sprite_frames = SubResource("SpriteFrames_uqisl")
+animation = &"down"
+
+[node name="CablesAnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(579, 353)
+scale = Vector2(3.6875, 2.875)
+sprite_frames = SubResource("SpriteFrames_uqisl")
+animation = &"down"
+
+[node name="CablesAnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(579, 439)
+scale = Vector2(3.6875, 2.875)
+sprite_frames = SubResource("SpriteFrames_uqisl")
+animation = &"down"
+
+[node name="CablesAnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+position = Vector2(579, 523)
+scale = Vector2(3.6875, 2.875)
+sprite_frames = SubResource("SpriteFrames_uqisl")
+animation = &"down"
+
+[node name="CablesAnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
+position = Vector2(579, 607)
+scale = Vector2(3.6875, 2.875)
+sprite_frames = SubResource("SpriteFrames_uqisl")
+animation = &"down"
+
+[node name="ElevatorCarriage" parent="." instance=ExtResource("13_x1ihw")]
+position = Vector2(581, 533)
+scale = Vector2(2, 1.78125)
+
+[node name="Floor0AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(580, 527.5)
+scale = Vector2(3.375, 3.28125)
+sprite_frames = SubResource("SpriteFrames_b2q1t")
+animation = &"closing"
+autoplay = "opening"
+
+[node name="Floor1AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(582, 380)
+scale = Vector2(3.375, 3.28125)
+sprite_frames = SubResource("SpriteFrames_b2q1t")
+animation = &"closing"
+autoplay = "closing"
+
+[node name="Floor2AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(582, 237)
+scale = Vector2(3.375, 3.28125)
+sprite_frames = SubResource("SpriteFrames_b2q1t")
+animation = &"closing"
+autoplay = "closing"
+
+[connection signal="pressed" from="TexturedUpButton" to="." method="_on_textured_up_button_pressed"]
+[connection signal="pressed" from="TexturedUpButton" to="ElevatorCarriage" method="_on_textured_up_button_pressed"]
+[connection signal="pressed" from="TextureDownButton" to="." method="_on_texture_down_button_pressed"]
+[connection signal="pressed" from="TextureDownButton" to="ElevatorCarriage" method="_on_texture_down_button_pressed"]

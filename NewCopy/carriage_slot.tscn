@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://k1qg65bwx0fp"]
+
+[ext_resource type="Script" path="res://carriage_slot_holder_2d.gd" id="1_xmxge"]
+[ext_resource type="Texture2D" uid="uid://b8afmo5tppseh" path="res://GodotImages/Steel.png.png" id="2_phvjq"]
+
+[node name="CarriageSlot" type="Node2D"]
+script = ExtResource("1_xmxge")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_phvjq")

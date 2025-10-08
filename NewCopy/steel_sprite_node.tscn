@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://sdjhc7nyp2fi"]
+
+[ext_resource type="Script" path="res://carriage_slot_holder_2d.gd" id="1_apniv"]
+[ext_resource type="Texture2D" uid="uid://b8afmo5tppseh" path="res://GodotImages/Steel.png.png" id="2_a07ua"]
+[ext_resource type="PackedScene" uid="uid://caebs14qfnj4k" path="res://material_on_conveyor_belt_component.tscn" id="2_lvhwo"]
+[ext_resource type="PackedScene" uid="uid://bwaehpdygtpem" path="res://material_name_component.tscn" id="2_re8xn"]
+
+[node name="SteelSpriteNode" type="Node2D"]
+script = ExtResource("1_apniv")
+
+[node name="MaterialNameComponent" parent="." instance=ExtResource("2_re8xn")]
+
+[node name="MaterialOnConveyorBeltComponent" parent="." instance=ExtResource("2_lvhwo")]
+
+[node name="Sprite2D" type="Sprite2D" parent="MaterialOnConveyorBeltComponent"]
+texture = ExtResource("2_a07ua")

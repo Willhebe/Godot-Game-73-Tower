@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dioxowur68i66"]
-
-[ext_resource type="Script" path="res://left_or_right_component.gd" id="1_jvlve"]
-
-[node name="LeftOrRightComponent" type="Node"]
-script = ExtResource("1_jvlve")

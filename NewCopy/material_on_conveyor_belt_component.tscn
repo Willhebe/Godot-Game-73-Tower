@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://caebs14qfnj4k"]
-
-[ext_resource type="Script" path="res://material_sprite_node.gd" id="1_76m0o"]
-
-[node name="MaterialOnConveyorBeltComponent" type="Node2D"]
-script = ExtResource("1_76m0o")

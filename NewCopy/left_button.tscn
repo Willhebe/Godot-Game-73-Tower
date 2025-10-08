@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://okj02rdqdd2q"]
-
-[ext_resource type="Texture2D" uid="uid://cjwmfmq0n0mis" path="res://GodotImages/left_arrow_small.png" id="1_04jxq"]
-
-[node name="LeftButton" type="Button"]
-offset_right = 26.0
-offset_bottom = 28.0
-icon = ExtResource("1_04jxq")

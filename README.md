@@ -13,3 +13,4 @@
 1. press import - navigate to folder where cloned repository - open Godot-Game-73-Tower/game-jam-seventy-three-pulley-tower folder
 2. godot project file should be there - select current folder and import project
 
+Followed instructions and they worked 8th October 25

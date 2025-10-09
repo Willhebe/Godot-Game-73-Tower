@@ -27,13 +27,14 @@ func _ready() -> void:
 		left_worker = worker_scene.instantiate()
 		left_worker.position = Vector2 (310.0,245.0)
 		left_worker.set_floor(2)
+		left_worker.get_node("LeftOrRightComponent").set_leftT_or_rightF(true)
 		left_worker.set_visible(false)
 		
 		add_child(left_worker)
 	
 		right_worker = worker_scene.instantiate()
 		right_worker.position = Vector2 (840.0,245.0)
-		right_worker.set_on_left(false)
+		right_worker.get_node("LeftOrRightComponent").set_leftT_or_rightF(false)
 		right_worker.set_floor(2)
 		right_worker.set_visible(false)
 		add_child(right_worker)

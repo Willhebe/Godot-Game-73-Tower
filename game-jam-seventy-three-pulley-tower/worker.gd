@@ -5,7 +5,7 @@ var screen_size
 var velocity_value = Vector2.ZERO
 var start_position = Vector2.ZERO
 var initial_child_count = 4
-var onLeft = true
+
 var floorY = 0
 var hasStopped = false
 var inStopZone = false
@@ -101,11 +101,6 @@ func get_initial_child_count() -> int:
 func _on_texture_left_button_pressed() -> void:
 	velocity_value.x = -1 
 	
-func set_on_left(isOnleft  :bool) -> void :
-	onLeft = isOnleft
-	
-func get_on_left() -> bool:
-	return onLeft
 	
 func set_floor(floorNum : int) -> void:
 	floorY = floorNum 

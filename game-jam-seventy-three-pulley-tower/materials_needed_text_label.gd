@@ -52,11 +52,6 @@ func remove_material(material_name : int) -> bool:
 	hasChanged = true
 	return willReturnTrueIfMaterialReduced
 	
-func set_on_left(isOnleft  :bool) -> void :
-	get_node("LeftOrRightComponent").set_leftT_or_rightF(isOnleft)
-	
-func get_on_left() -> bool:
-	return get_node("LeftOrRightComponent").get_leftT_or_rightF()
 	
 func set_floor(floorNum : int) -> void:
 	floorY = floorNum 
@@ -71,7 +66,7 @@ func set_materials_needed_amount() -> void:
 	
 	
 	
-	var otherSide = get_parent().get_Materials_Needed(floorY,!onLeft)
+	var otherSide = get_parent().get_Materials_Needed(floorY,!get_node("LeftOrRightComponent").get_leftT_or_rightF())
 	
 	if (floorY == 0):
 		amountMaterialsNeeded[Materials.STEEL] = 5 

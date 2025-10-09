@@ -9,21 +9,23 @@ func _ready() -> void:
 	#worker index 0 y 524 x 310 index 1 x 840 index 2 and 3 y 385
 	var worker = worker_scene.instantiate()
 	worker.position = Vector2 (310.0,524.0)
+	worker.get_node("LeftOrRightComponent").set_leftT_or_rightF(true)
 	add_child(worker)
 	
 	worker = worker_scene.instantiate()
 	worker.position = Vector2 (840.0,524.0)
-	worker.set_on_left(false)
+	worker.get_node("LeftOrRightComponent").set_leftT_or_rightF(false)
 	add_child(worker)
 	
 	worker = worker_scene.instantiate()
 	worker.position = Vector2 (310.0,385.0)
 	worker.set_floor(1)
+	worker.get_node("LeftOrRightComponent").set_leftT_or_rightF(true)
 	add_child(worker)
 	
 	worker = worker_scene.instantiate()
 	worker.position = Vector2 (840.0,385.0)
-	worker.set_on_left(false)
+	worker.get_node("LeftOrRightComponent").set_leftT_or_rightF(false)
 	worker.set_floor(1)
 	add_child(worker)
 	pass # Replace with function body.
@@ -35,8 +37,9 @@ func _process(_delta: float) -> void:
 	
 	
 	for worker in get_children():
+		var isLeft = worker.get_node("LeftOrRightComponent").get_leftT_or_rightF()
 		var materialsCollection = get_parent().get_node("MaterialsNeededCollection")
-		var associatedMaterialNeeded = materialsCollection.get_Materials_Needed(worker.get_floor(),worker.get_on_left())
+		var associatedMaterialNeeded = materialsCollection.get_Materials_Needed(worker.get_floor(),isLeft)
 		
 		
 		if (!worker.has_stopped()):
@@ -44,7 +47,7 @@ func _process(_delta: float) -> void:
 		
 			if (worker.is_stopped_on_left()):
 		 
-				if (worker.get_floor()==0 && worker.get_on_left() && get_parent().get_node("MaterialsConveyorBeltCollection").has_materials()):
+				if (worker.get_floor()==0 && isLeft && get_parent().get_node("MaterialsConveyorBeltCollection").has_materials()):
 					# move instatantiated steel to Worker if there is any - take off conveyor belt
 					if (worker.get_child_count() == worker.get_initial_child_count()):
 						# only removes steel if worker has original number of children thus is empty of materials
@@ -53,7 +56,7 @@ func _process(_delta: float) -> void:
 						temp_material.get_node("MaterialOnConveyorBeltComponent").set_is_on_conveyor_belt(false)
 						worker.add_child(temp_material)
 					
-				elif (!worker.get_on_left()  && get_parent().get_node("Elevator/ElevatorCarriage").get_current_floor_position() == worker.get_floor()):
+				elif (!isLeft  && get_parent().get_node("Elevator/ElevatorCarriage").get_current_floor_position() == worker.get_floor()):
 					if (worker.get_child_count() == worker.get_initial_child_count() && get_parent().get_node("Elevator/ElevatorCarriage").has_materials()):
 						var temp_material = get_parent().get_node("Elevator/ElevatorCarriage").get_material_child()
 						get_parent().get_node("Elevator/ElevatorCarriage").remove_child(temp_material)
@@ -66,11 +69,11 @@ func _process(_delta: float) -> void:
 						get_parent().get_node("Elevator/ElevatorCarriage").add_child(temp_material)
 			
 				# if on left and stopped on left worker tries to get rid of material
-				elif (worker.get_on_left()):
+				elif (isLeft):
 					if (worker.get_child_count() > worker.get_initial_child_count()):
 						var carried_material = worker.get_child(worker.get_child_count()-1)
 						worker.remove_child(carried_material)
-						if (associatedMaterialNeeded!= null && worker.get_on_left()==associatedMaterialNeeded.get_on_left() && worker.get_floor() == associatedMaterialNeeded.get_floor()):
+						if (associatedMaterialNeeded!= null && isLeft==associatedMaterialNeeded.get_node("LeftOrRightComponent").get_leftT_or_rightF() && worker.get_floor() == associatedMaterialNeeded.get_floor()):
 							if (associatedMaterialNeeded.remove_material(carried_material.get_node("MaterialNameComponent").get_material_name())):
 								# only add to level score if there was materials needed
 								LevelInfo.add_level_score(1)
@@ -79,7 +82,7 @@ func _process(_delta: float) -> void:
 			
 			elif (worker.is_stopped_on_right()):
 
-				if (worker.get_on_left()  && get_parent().get_node("Elevator/ElevatorCarriage").get_current_floor_position() == worker.get_floor()):
+				if (isLeft  && get_parent().get_node("Elevator/ElevatorCarriage").get_current_floor_position() == worker.get_floor()):
 	
 					if (worker.get_child_count() == worker.get_initial_child_count() && get_parent().get_node("Elevator/ElevatorCarriage").has_materials()):
 				
@@ -93,12 +96,12 @@ func _process(_delta: float) -> void:
 						
 						get_parent().get_node("Elevator/ElevatorCarriage").add_child(steel)
 					
-				elif (!worker.get_on_left()):
+				elif (!isLeft):
 					if (worker.get_child_count() > worker.get_initial_child_count()):
 						var carried_material = worker.get_child(worker.get_child_count()-1)
 						
 						
-						if (associatedMaterialNeeded!= null && worker.get_on_left()==associatedMaterialNeeded.get_on_left() && worker.get_floor() == associatedMaterialNeeded.get_floor()):
+						if (associatedMaterialNeeded!= null && isLeft==associatedMaterialNeeded.get_node("LeftOrRightComponent").get_leftT_or_rightF() && worker.get_floor() == associatedMaterialNeeded.get_floor()):
 							if (associatedMaterialNeeded.remove_material(carried_material.get_node("MaterialNameComponent").get_material_name())):
 								# only add to level score if there was materials needed
 								LevelInfo.add_level_score(1)

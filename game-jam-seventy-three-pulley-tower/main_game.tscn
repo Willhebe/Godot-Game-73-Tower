@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://drugei72tv881"]
+[gd_scene load_steps=32 format=3 uid="uid://drugei72tv881"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_7ljjd"]
 [ext_resource type="PackedScene" uid="uid://sdjhc7nyp2fi" path="res://steel_sprite_node.tscn" id="2_2buab"]
@@ -23,11 +23,12 @@
 [ext_resource type="PackedScene" uid="uid://muuaeracyy51" path="res://message_tube_system.tscn" id="20_kx58v"]
 [ext_resource type="Script" path="res://pause_node.gd" id="22_6cbwo"]
 [ext_resource type="Texture2D" uid="uid://bhhrg6fwvx4j3" path="res://GodotImages/pause_sprite_0.png" id="23_62fwq"]
+[ext_resource type="Script" path="res://color_rect.gd" id="23_nyxdk"]
 [ext_resource type="Script" path="res://button.gd" id="23_tse1d"]
 [ext_resource type="Texture2D" uid="uid://byu8xan0pg1pc" path="res://GodotImages/pause_sprite_1.png" id="24_qh464"]
 [ext_resource type="Script" path="res://rich_text_label.gd" id="26_kyu6p"]
 [ext_resource type="Theme" uid="uid://n8qqfcclbwqo" path="res://main_game.tres" id="26_qenfs"]
-[ext_resource type="Script" path="res://temp_pause_indicator.gd" id="26_vc7tb"]
+[ext_resource type="Script" path="res://color_rect_2.gd" id="29_g7xw5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ugty"]
 animations = [{
@@ -140,26 +141,43 @@ gold_key_scene = ExtResource("4_5in8b")
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_6cbwo")
 
-[node name="TempPauseIndicator" type="ColorRect" parent="PauseNode"]
-offset_top = -11.0
-offset_right = 1215.0
-offset_bottom = 820.0
-theme = ExtResource("26_qenfs")
-color = Color(0.0470588, 0.0470588, 0.0470588, 0.321569)
-script = ExtResource("26_vc7tb")
+[node name="ColorRect" type="ColorRect" parent="PauseNode"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -16.0
+offset_right = 161.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("23_nyxdk")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PauseNode/TempPauseIndicator"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseNode/ColorRect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 15.358
-anchor_bottom = 4.775
-offset_left = 377.0
-offset_top = 332.0
-offset_right = -17829.0
-offset_bottom = -3502.58
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = -46.0
+offset_right = 145.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("26_qenfs")
-text = "Paused (temp)"
+text = "PAUSED"
 script = ExtResource("26_kyu6p")
+
+[node name="ColorRect2" type="ColorRect" parent="PauseNode"]
+offset_right = 1250.0
+offset_bottom = 833.0
+color = Color(0, 0, 0, 0.239216)
+script = ExtResource("29_g7xw5")
 
 [node name="PauseTextureButton" type="TextureButton" parent="PauseNode"]
 process_mode = 3

@@ -20,7 +20,7 @@ func isActive() -> bool:
 	return is_active
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(!is_active):
 		if level_score_goal <= LevelInfo.get_level_score():
 			is_active = true

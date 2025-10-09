@@ -13,5 +13,5 @@ func set_level_number(level :int) ->void:
 	level_number = level
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

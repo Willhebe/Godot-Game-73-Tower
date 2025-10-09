@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (hasChanged):
 		update_text()
 	
@@ -53,10 +53,10 @@ func remove_material(material_name : int) -> bool:
 	return willReturnTrueIfMaterialReduced
 	
 func set_on_left(isOnleft  :bool) -> void :
-	onLeft = isOnleft
+	get_node("LeftOrRightComponent").set_leftT_or_rightF(isOnleft)
 	
 func get_on_left() -> bool:
-	return onLeft
+	return get_node("LeftOrRightComponent").get_leftT_or_rightF()
 	
 func set_floor(floorNum : int) -> void:
 	floorY = floorNum 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceiax8yqeltoq"]
+[gd_scene load_steps=5 format=3 uid="uid://ceiax8yqeltoq"]
 
 [ext_resource type="Script" path="res://materials_needed_text_label.gd" id="1_uub8w"]
 [ext_resource type="PackedScene" uid="uid://sdjhc7nyp2fi" path="res://steel_sprite_node.tscn" id="2_u12mn"]
 [ext_resource type="PackedScene" uid="uid://b0nar3u1rdy4g" path="res://cable_sprite_node.tscn" id="3_rcott"]
+[ext_resource type="PackedScene" uid="uid://dioxowur68i66" path="res://left_or_right_component.tscn" id="4_rf68r"]
 
 [node name="MaterialsNeededTextLabel" type="RichTextLabel"]
 offset_left = -20.0
@@ -17,3 +18,5 @@ position = Vector2(18, 12)
 [node name="CableSpriteNode" parent="." instance=ExtResource("3_rcott")]
 position = Vector2(16, 33)
 scale = Vector2(0.6, 0.6)
+
+[node name="LeftOrRightComponent" parent="." instance=ExtResource("4_rf68r")]

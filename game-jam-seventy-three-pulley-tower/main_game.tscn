@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://drugei72tv881"]
+[gd_scene load_steps=30 format=3 uid="uid://drugei72tv881"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_7ljjd"]
 [ext_resource type="PackedScene" uid="uid://sdjhc7nyp2fi" path="res://steel_sprite_node.tscn" id="2_2buab"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ccqoeku8r4ga6" path="res://floor._sprite.tscn" id="2_jrnpn"]
 [ext_resource type="PackedScene" uid="uid://br0bq7dlxw6ep" path="res://worker_collection.tscn" id="3_3rwbj"]
 [ext_resource type="PackedScene" uid="uid://dujmi2i7ajlf3" path="res://worker.tscn" id="3_t7gcd"]
-[ext_resource type="PackedScene" uid="uid://druwp00p2ntgp" path="res://gold_key_node_2d.tscn" id="4_5in8b"]
 [ext_resource type="PackedScene" uid="uid://w8muw37seh0u" path="res://elevator.tscn" id="4_h4s54"]
 [ext_resource type="PackedScene" uid="uid://ceiax8yqeltoq" path="res://materials_needed_text_label.tscn" id="5_miitv"]
 [ext_resource type="Script" path="res://materials_needed_collection.gd" id="7_prkm7"]
@@ -18,8 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cnojvtjurwvc8" path="res://GodotImages/conveyor_belt_end2.png" id="12_vh8dc"]
 [ext_resource type="Texture2D" uid="uid://c8507g1lmukss" path="res://GodotImages/conveyor_belt_end1.png" id="13_p66vp"]
 [ext_resource type="Texture2D" uid="uid://nvoxlh84tkaq" path="res://GodotImages/conveyor_belt_end0.png" id="14_27qti"]
-[ext_resource type="Script" path="res://level_collection.gd" id="18_bnpp6"]
-[ext_resource type="PackedScene" uid="uid://fayehxqie1yc" path="res://level_2d.tscn" id="19_w2cfx"]
+[ext_resource type="PackedScene" uid="uid://tkmf8leiraey" path="res://level_collection.tscn" id="19_os1t5"]
 [ext_resource type="PackedScene" uid="uid://muuaeracyy51" path="res://message_tube_system.tscn" id="20_kx58v"]
 [ext_resource type="Script" path="res://pause_node.gd" id="22_6cbwo"]
 [ext_resource type="Texture2D" uid="uid://bhhrg6fwvx4j3" path="res://GodotImages/pause_sprite_0.png" id="23_62fwq"]
@@ -82,17 +80,6 @@ worker_scene = ExtResource("3_t7gcd")
 
 [node name="Elevator" parent="." instance=ExtResource("4_h4s54")]
 
-[node name="FloorSprite" parent="." instance=ExtResource("2_jrnpn")]
-position = Vector2(569, 437)
-
-[node name="FloorSprite2" parent="." instance=ExtResource("2_jrnpn")]
-
-[node name="FloorSprite3" parent="." instance=ExtResource("2_jrnpn")]
-position = Vector2(577, 296)
-
-[node name="FloorSprite4" parent="." instance=ExtResource("2_jrnpn")]
-position = Vector2(575, 156)
-
 [node name="FloorSprite5" parent="." instance=ExtResource("2_jrnpn")]
 position = Vector2(-8, 460)
 rotation = 1.5708
@@ -133,10 +120,7 @@ script = ExtResource("9_sflhc")
 steel_scene = ExtResource("2_2buab")
 cables_scene = ExtResource("10_aopgo")
 
-[node name="LevelCollection" type="Node2D" parent="."]
-script = ExtResource("18_bnpp6")
-level_scene = ExtResource("19_w2cfx")
-gold_key_scene = ExtResource("4_5in8b")
+[node name="LevelCollection" parent="." instance=ExtResource("19_os1t5")]
 
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_6cbwo")

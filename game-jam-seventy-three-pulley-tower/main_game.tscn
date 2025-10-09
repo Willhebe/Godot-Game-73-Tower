@@ -140,24 +140,12 @@ gold_key_scene = ExtResource("4_5in8b")
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_6cbwo")
 
-[node name="PauseTextureButton" type="TextureButton" parent="PauseNode"]
-process_mode = 3
-offset_left = 1035.0
-offset_top = 11.0
-offset_right = 1067.0
-offset_bottom = 43.0
-scale = Vector2(2.5, 2.5)
-texture_normal = ExtResource("23_62fwq")
-texture_pressed = ExtResource("24_qh464")
-script = ExtResource("23_tse1d")
-
 [node name="TempPauseIndicator" type="ColorRect" parent="PauseNode"]
-offset_left = 391.0
-offset_top = 224.0
-offset_right = 864.0
-offset_bottom = 388.0
+offset_top = -11.0
+offset_right = 1215.0
+offset_bottom = 820.0
 theme = ExtResource("26_qenfs")
-color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+color = Color(0.0470588, 0.0470588, 0.0470588, 0.321569)
 script = ExtResource("26_vc7tb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PauseNode/TempPauseIndicator"]
@@ -165,12 +153,23 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 15.358
 anchor_bottom = 4.775
-offset_left = 121.0
-offset_top = 49.0
-offset_right = -6960.33
-offset_bottom = -688.1
+offset_left = 377.0
+offset_top = 332.0
+offset_right = -17829.0
+offset_bottom = -3502.58
 theme = ExtResource("26_qenfs")
 text = "Paused (temp)"
 script = ExtResource("26_kyu6p")
+
+[node name="PauseTextureButton" type="TextureButton" parent="PauseNode"]
+process_mode = 3
+offset_left = 1035.0
+offset_top = 23.0
+offset_right = 1067.0
+offset_bottom = 55.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("23_62fwq")
+texture_pressed = ExtResource("24_qh464")
+script = ExtResource("23_tse1d")
 
 [connection signal="pressed" from="PauseNode/PauseTextureButton" to="PauseNode/PauseTextureButton" method="_on_pressed"]

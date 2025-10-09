@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for child in get_parent().get_children():
 		# uncomment following to make screen scroll up and down - TODO make this happen when have more levels
 		# if a child has the method dont_scroll don't do anything to it. 

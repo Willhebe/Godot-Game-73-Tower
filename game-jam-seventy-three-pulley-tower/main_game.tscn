@@ -165,10 +165,10 @@ script = ExtResource("29_g7xw5")
 
 [node name="PauseTextureButton" type="TextureButton" parent="PauseNode"]
 process_mode = 3
-offset_left = 1035.0
-offset_top = 23.0
-offset_right = 1067.0
-offset_bottom = 55.0
+offset_left = 918.0
+offset_top = 14.0
+offset_right = 950.0
+offset_bottom = 46.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("23_62fwq")
 texture_pressed = ExtResource("24_qh464")

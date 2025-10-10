@@ -10,15 +10,7 @@ func _ready() -> void:
 			is_active = true
 			level_score_goal = 0
 		2:
-			level_score_goal = 2
-		3:
-			level_score_goal = 4
-		4:
-			level_score_goal = 6
-		5:
-			level_score_goal = 8
-		6:
-			level_score_goal= 10
+			level_score_goal = 10
 	pass # Replace with function body.
 
 func get_level_score_goal() -> int:

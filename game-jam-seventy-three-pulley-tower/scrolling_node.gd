@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		pass
 	if (position.y < -100):
 		scroll_velocity_y *=-1
-	elif (position.y > 100):
+	elif (position.y > 400):
 		scroll_velocity_y *=-1
 	
 	pass

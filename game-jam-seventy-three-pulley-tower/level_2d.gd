@@ -67,13 +67,12 @@ func _process(delta: float) -> void:
 		gold_key_dismiss_in_progress = true
 		
 		print(get_child_count())
-		get_child(get_child_count() - 3).get_node("AnimatedSprite2D").play("turning")
+		get_node("GoldKeyNode2D").get_node("AnimatedSprite2D").play("turning")
 	if (gold_key_dismiss_in_progress):
 		delta_count += delta
 		if (delta_count > 3):
 			# Once gold key has been turning for 3 seconds remove it
 			var gold_key = get_node("GoldKeyNode2D")
-			#var gold_key = get_child(get_child_count() - 3)
 			remove_child(gold_key)
 			gold_key.queue_free()
 			delta_count = 0
@@ -82,6 +81,7 @@ func _process(delta: float) -> void:
 			right_worker.set_visible(true)
 			left_materials_needed.set_visible(true)
 			right_materials_needed.set_visible(true)
+			get_parent().get_parent().get_node("MessageTubeSystem/PipelineCollection").add_pipelines(get_node("LevelNumberComponent").get_level_number())
 			remove_child(left_worker)
 			get_parent().get_parent().get_node("WorkerCollection").add_child(left_worker)
 			remove_child(right_worker)

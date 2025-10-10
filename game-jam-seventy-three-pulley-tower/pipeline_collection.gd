@@ -1,5 +1,6 @@
 extends Node2D
 @export var pipeline_sprite_scene : PackedScene
+var spritesize = 32
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,3 +49,18 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func add_pipelines(level_No :int) -> void:
+	var pipeline_sprite = pipeline_sprite_scene.instantiate()
+	pipeline_sprite.position = Vector2(585 + 5 * level_No ,480 + spritesize * 5 - 140 * level_No )
+	pipeline_sprite.scale = Vector2(1.0,11.0)
+	#set_visible(false)
+	add_child(pipeline_sprite)
+	
+	pipeline_sprite = pipeline_sprite_scene.instantiate()
+	pipeline_sprite.rotation = PI/2 
+	pipeline_sprite.position = Vector2(585 + 5 * level_No + spritesize *6 + 16 ,480 - spritesize * 0.5 - 140  * level_No )
+	pipeline_sprite.scale = Vector2(1.0,13.0)
+	#set_visible(false)
+	add_child(pipeline_sprite)
+	

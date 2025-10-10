@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 LevelInfo="*res://level_info.gd"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 move_left={

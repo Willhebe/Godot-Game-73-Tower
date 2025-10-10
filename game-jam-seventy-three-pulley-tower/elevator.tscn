@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://w8muw37seh0u"]
+[gd_scene load_steps=17 format=3 uid="uid://w8muw37seh0u"]
 
 [ext_resource type="Texture2D" uid="uid://c508ne4kb8im4" path="res://GodotImages/floor.png" id="1_utkql"]
 [ext_resource type="Script" path="res://elevator.gd" id="1_yn85s"]
@@ -13,12 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://c48f8tlgmiio7" path="res://GodotImages/ElevatorDoor1.png" id="15_ncgjf"]
 [ext_resource type="Texture2D" uid="uid://dytqjkluagjrj" path="res://GodotImages/ElevatorDoor2.png" id="16_dqbyx"]
 [ext_resource type="Texture2D" uid="uid://dtgxc0yhe5n7o" path="res://GodotImages/ElevatorDoor3.png" id="17_u77pm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ft81"]
-size = Vector2(25, 1062.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8olvk"]
-size = Vector2(19, 1050.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c650x"]
 animations = [{
@@ -138,30 +132,16 @@ animations = [{
 [node name="Elevator" type="Node2D"]
 script = ExtResource("1_yn85s")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-16, 0)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(554.5, 257.75)
-shape = SubResource("RectangleShape2D_0ft81")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(555, 251)
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(539, 251)
 rotation = 1.5708
+scale = Vector2(2, 1)
 texture = ExtResource("1_utkql")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(-28, -9)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(651.5, 259.75)
-shape = SubResource("RectangleShape2D_8olvk")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-position = Vector2(651, 259)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(623, 250)
 rotation = 1.5708
+scale = Vector2(2, 1)
 texture = ExtResource("1_utkql")
 
 [node name="PulleyAnimatedSprite2D" type="AnimatedSprite2D" parent="."]

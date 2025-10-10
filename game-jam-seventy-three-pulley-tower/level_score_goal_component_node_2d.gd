@@ -6,7 +6,10 @@ var is_active = false
 func _ready() -> void:
 	var level_number = get_parent().get_node("LevelNumberComponent").get_level_number()
 	match level_number:
-		0,1:
+		0:
+			is_active = true
+			level_score_goal = 0
+		1:
 			is_active = true
 			level_score_goal = 0
 		2:
@@ -15,10 +18,12 @@ func _ready() -> void:
 			level_score_goal = 4
 		4:
 			level_score_goal = 6
-		5:
-			level_score_goal = 8
-		6:
-			level_score_goal= 10
+		_:
+			level_score_goal = 2 * level_number
+		
+		
+		
+			
 	pass # Replace with function body.
 
 func get_level_score_goal() -> int:

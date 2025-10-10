@@ -18,7 +18,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	maxFloor = get_parent().get_parent().get_node("LevelCollection").getMaximumFloor()
+	currentFloor = get_parent().currentFloor
+	velocity = get_parent().velocity.y
 	if velocity > 0:
 		position.y -= delta * 200
 		if currentFloor == 2:
@@ -58,7 +59,7 @@ func _process(delta: float) -> void:
 				get_parent().get_parent().get_node("WorkerCollection").set_all_workers_not_stopped(0)
 			else:
 				currentFloorPosition = -100
-	#print(get_child_count()+1000)
+
 	if (get_child_count()>initial_child_count):
 		var material_placeholder  = get_child(initial_child_count) 
 		if (material_placeholder.get_node("MaterialNameComponent").get_material_name() == Materials.STEEL):
@@ -95,6 +96,8 @@ func _process(delta: float) -> void:
 		elif (material_placeholder.get_node("MaterialNameComponent").get_material_name() == Materials.CABLE):
 			material_placeholder.position = Vector2(5.0,7.0)
 			material_placeholder.scale = Vector2(0.3,0.3)
+	
+	get_parent().velocity.y = velocity
 	
 func setMaxFloor(newMaxFloor) -> void:
 	maxFloor = newMaxFloor

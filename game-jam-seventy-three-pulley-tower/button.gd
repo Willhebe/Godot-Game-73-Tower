@@ -16,9 +16,11 @@ func _on_pressed() -> void:
 	if(!isPaused):
 		get_tree().paused = true
 		isPaused = true
-		get_parent().get_node("TempPauseIndicator").set_visible(true)
+		get_parent().get_node("ColorRect").set_visible(true)
+		get_parent().get_node("ColorRect2").set_visible(true)
 	else:
 		get_tree().paused = false
 		isPaused = false
-		get_parent().get_node("TempPauseIndicator").set_visible(false)
+		get_parent().get_node("ColorRect").set_visible(false)
+		get_parent().get_node("ColorRect2").set_visible(false)
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://drugei72tv881"]
+[gd_scene load_steps=30 format=3 uid="uid://drugei72tv881"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_7ljjd"]
 [ext_resource type="PackedScene" uid="uid://sdjhc7nyp2fi" path="res://steel_sprite_node.tscn" id="2_2buab"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ccqoeku8r4ga6" path="res://floor._sprite.tscn" id="2_jrnpn"]
 [ext_resource type="PackedScene" uid="uid://br0bq7dlxw6ep" path="res://worker_collection.tscn" id="3_3rwbj"]
 [ext_resource type="PackedScene" uid="uid://dujmi2i7ajlf3" path="res://worker.tscn" id="3_t7gcd"]
-[ext_resource type="PackedScene" uid="uid://druwp00p2ntgp" path="res://gold_key_node_2d.tscn" id="4_5in8b"]
 [ext_resource type="PackedScene" uid="uid://w8muw37seh0u" path="res://elevator.tscn" id="4_h4s54"]
 [ext_resource type="PackedScene" uid="uid://ceiax8yqeltoq" path="res://materials_needed_text_label.tscn" id="5_miitv"]
 [ext_resource type="Script" path="res://materials_needed_collection.gd" id="7_prkm7"]
@@ -18,16 +17,16 @@
 [ext_resource type="Texture2D" uid="uid://cnojvtjurwvc8" path="res://GodotImages/conveyor_belt_end2.png" id="12_vh8dc"]
 [ext_resource type="Texture2D" uid="uid://c8507g1lmukss" path="res://GodotImages/conveyor_belt_end1.png" id="13_p66vp"]
 [ext_resource type="Texture2D" uid="uid://nvoxlh84tkaq" path="res://GodotImages/conveyor_belt_end0.png" id="14_27qti"]
-[ext_resource type="Script" path="res://level_collection.gd" id="18_bnpp6"]
-[ext_resource type="PackedScene" uid="uid://fayehxqie1yc" path="res://level_2d.tscn" id="19_w2cfx"]
+[ext_resource type="PackedScene" uid="uid://tkmf8leiraey" path="res://level_collection.tscn" id="19_os1t5"]
 [ext_resource type="PackedScene" uid="uid://muuaeracyy51" path="res://message_tube_system.tscn" id="20_kx58v"]
 [ext_resource type="Script" path="res://pause_node.gd" id="22_6cbwo"]
 [ext_resource type="Texture2D" uid="uid://bhhrg6fwvx4j3" path="res://GodotImages/pause_sprite_0.png" id="23_62fwq"]
+[ext_resource type="Script" path="res://color_rect.gd" id="23_nyxdk"]
 [ext_resource type="Script" path="res://button.gd" id="23_tse1d"]
 [ext_resource type="Texture2D" uid="uid://byu8xan0pg1pc" path="res://GodotImages/pause_sprite_1.png" id="24_qh464"]
 [ext_resource type="Script" path="res://rich_text_label.gd" id="26_kyu6p"]
 [ext_resource type="Theme" uid="uid://n8qqfcclbwqo" path="res://main_game.tres" id="26_qenfs"]
-[ext_resource type="Script" path="res://temp_pause_indicator.gd" id="26_vc7tb"]
+[ext_resource type="Script" path="res://color_rect_2.gd" id="29_g7xw5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ugty"]
 animations = [{
@@ -70,6 +69,7 @@ script = ExtResource("1_7ljjd")
 script = ExtResource("2_7rukm")
 
 [node name="BackgroundRect" type="ColorRect" parent="."]
+offset_top = -2496.0
 offset_right = 1200.0
 offset_bottom = 800.0
 color = Color(0.603922, 0.760784, 1, 1)
@@ -80,25 +80,6 @@ color = Color(0.603922, 0.760784, 1, 1)
 worker_scene = ExtResource("3_t7gcd")
 
 [node name="Elevator" parent="." instance=ExtResource("4_h4s54")]
-
-[node name="FloorSprite" parent="." instance=ExtResource("2_jrnpn")]
-position = Vector2(569, 437)
-
-[node name="FloorSprite2" parent="." instance=ExtResource("2_jrnpn")]
-
-[node name="FloorSprite3" parent="." instance=ExtResource("2_jrnpn")]
-position = Vector2(577, 296)
-
-[node name="FloorSprite4" parent="." instance=ExtResource("2_jrnpn")]
-position = Vector2(575, 156)
-
-[node name="FloorSprite5" parent="." instance=ExtResource("2_jrnpn")]
-position = Vector2(-8, 460)
-rotation = 1.5708
-
-[node name="FloorSprite6" parent="." instance=ExtResource("2_jrnpn")]
-position = Vector2(1166, 463)
-rotation = 1.5708
 
 [node name="ConveyorBeltAnimatedSprite" type="AnimatedSprite2D" parent="."]
 process_mode = 3
@@ -123,6 +104,14 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mns3l")
 autoplay = "default"
 
+[node name="LeftWallSprite" parent="." instance=ExtResource("2_jrnpn")]
+position = Vector2(0, 460)
+rotation = 1.5708
+
+[node name="RightWallSprite" parent="." instance=ExtResource("2_jrnpn")]
+position = Vector2(1166, 463)
+rotation = 1.5708
+
 [node name="MaterialsNeededCollection" type="Node2D" parent="."]
 script = ExtResource("7_prkm7")
 materials_scene = ExtResource("5_miitv")
@@ -132,41 +121,56 @@ script = ExtResource("9_sflhc")
 steel_scene = ExtResource("2_2buab")
 cables_scene = ExtResource("10_aopgo")
 
-[node name="LevelCollection" type="Node2D" parent="."]
-script = ExtResource("18_bnpp6")
-level_scene = ExtResource("19_w2cfx")
-gold_key_scene = ExtResource("4_5in8b")
+[node name="LevelCollection" parent="." instance=ExtResource("19_os1t5")]
 
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_6cbwo")
 
-[node name="TempPauseIndicator" type="ColorRect" parent="PauseNode"]
-offset_top = -11.0
-offset_right = 1215.0
-offset_bottom = 820.0
-theme = ExtResource("26_qenfs")
-color = Color(0.0470588, 0.0470588, 0.0470588, 0.321569)
-script = ExtResource("26_vc7tb")
+[node name="ColorRect" type="ColorRect" parent="PauseNode"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -16.0
+offset_right = 161.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("23_nyxdk")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PauseNode/TempPauseIndicator"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseNode/ColorRect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 15.358
-anchor_bottom = 4.775
-offset_left = 377.0
-offset_top = 332.0
-offset_right = -17829.0
-offset_bottom = -3502.58
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = -46.0
+offset_right = 145.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("26_qenfs")
-text = "Paused (temp)"
+text = "PAUSED"
 script = ExtResource("26_kyu6p")
+
+[node name="ColorRect2" type="ColorRect" parent="PauseNode"]
+offset_top = -15.0
+offset_right = 1250.0
+offset_bottom = 833.0
+color = Color(0, 0, 0, 0.239216)
+script = ExtResource("29_g7xw5")
 
 [node name="PauseTextureButton" type="TextureButton" parent="PauseNode"]
 process_mode = 3
-offset_left = 1035.0
-offset_top = 23.0
-offset_right = 1067.0
-offset_bottom = 55.0
+offset_left = 918.0
+offset_top = 14.0
+offset_right = 950.0
+offset_bottom = 46.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("23_62fwq")
 texture_pressed = ExtResource("24_qh464")

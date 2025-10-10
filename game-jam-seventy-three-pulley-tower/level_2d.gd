@@ -81,6 +81,8 @@ func _process(delta: float) -> void:
 			right_worker.set_visible(true)
 			left_materials_needed.set_visible(true)
 			right_materials_needed.set_visible(true)
+			get_parent().get_parent().get_node("MessageTubeSystem/MessageTubeCollection").add_message_tube(true,get_node("LevelNumberComponent").get_level_number())
+			get_parent().get_parent().get_node("MessageTubeSystem/MessageTubeCollection").add_message_tube(false,get_node("LevelNumberComponent").get_level_number())
 			get_parent().get_parent().get_node("MessageTubeSystem/PipelineCollection").add_pipelines(get_node("LevelNumberComponent").get_level_number())
 			remove_child(left_worker)
 			get_parent().get_parent().get_node("WorkerCollection").add_child(left_worker)

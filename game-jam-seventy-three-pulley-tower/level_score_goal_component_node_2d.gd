@@ -17,6 +17,8 @@ func _ready() -> void:
 			level_score_goal = 6
 		5:
 			level_score_goal = 8
+		6:
+			level_score_goal= 10
 	pass # Replace with function body.
 
 func get_level_score_goal() -> int:

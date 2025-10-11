@@ -20,13 +20,26 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	currentFloor = get_parent().get_current_floor()
 	new_velocity = get_parent().get_velocity_y()
-	position.y += delta * 200 * new_velocity
+	
+	
+	
+	
 	
 	var test = position.y + (140 * currentFloor)
-	
-		
-	if (test  < 533 + 10)&& (test > 533) :
-		get_parent().get_parent().get_node("WorkerCollection").set_all_workers_not_stopped(currentFloor)
+	if (test < 533 - 10):
+		# too high move down
+		new_velocity = 1
+		position.y += delta * 200 * new_velocity
+		get_parent().set_velocity_y(1)
+	elif ( test > 533 +10):
+		# too low move up
+		new_velocity = -1
+		position.y += delta * 200 * new_velocity
+		get_parent().set_velocity_y(-1)
+	else:
+		if (test > 522 && test < 544):
+			print(test)
+		# if at correct floor stay still
 		new_velocity = 0
 		get_parent().set_velocity_y(0)
 		position.y = 533 -(140 * currentFloor)
@@ -34,7 +47,7 @@ func _process(delta: float) -> void:
 	
 
 	if (get_child_count()>initial_child_count):
-		var material_placeholder  = get_child(initial_child_count-1) 
+		var material_placeholder  = get_child(initial_child_count) 
 		if (material_placeholder.get_node("MaterialNameComponent").get_material_name() == Materials.STEEL):
 			material_placeholder.position = Vector2(-4.5,-4.0)
 			material_placeholder.scale = Vector2(0.45,0.45)
@@ -43,7 +56,7 @@ func _process(delta: float) -> void:
 			material_placeholder.scale = Vector2(0.3,0.3)
 	
 	if (get_child_count()>initial_child_count+1):
-		var material_placeholder  = get_child(initial_child_count) 
+		var material_placeholder  = get_child(initial_child_count+1) 
 		if (material_placeholder.get_node("MaterialNameComponent").get_material_name() == Materials.STEEL):
 			material_placeholder.position = Vector2(5.5,-4.0)
 			material_placeholder.scale = Vector2(0.45,0.45)
@@ -52,7 +65,7 @@ func _process(delta: float) -> void:
 			material_placeholder.scale = Vector2(0.3,0.3)
 			
 	if (get_child_count()>initial_child_count+2):
-		var material_placeholder  = get_child(initial_child_count+1) 
+		var material_placeholder  = get_child(initial_child_count+2) 
 		if (material_placeholder.get_node("MaterialNameComponent").get_material_name() == Materials.STEEL):
 			material_placeholder.position = Vector2(-4.5,7.0)
 			material_placeholder.scale = Vector2(0.45,0.45)
@@ -62,7 +75,7 @@ func _process(delta: float) -> void:
 			
 	if (get_child_count()>initial_child_count+3):
 
-		var material_placeholder  = get_child(initial_child_count+2) 
+		var material_placeholder  = get_child(initial_child_count+3) 
 		if (material_placeholder.get_node("MaterialNameComponent").get_material_name() == Materials.STEEL):
 			material_placeholder.position = Vector2(5.5,7.0)
 			material_placeholder.scale = Vector2(0.45,0.45)

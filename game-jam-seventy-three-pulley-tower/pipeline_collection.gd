@@ -23,8 +23,8 @@ func add_pipelines(level_No :int) -> void:
 	if (level_No < 4): 
 		horizontal_space_for_wall_sprite =0
 	var pipeline_sprite = pipeline_sprite_scene.instantiate()
-	pipeline_sprite.position = Vector2(585 + 5 * level_No + horizontal_space_for_wall_sprite ,480 + spritesize * 1.5 * (n_sprite_vertically+level_No) - distance_between_levels * level_No )
-	pipeline_sprite.scale = Vector2(1.0,(n_sprite_vertically+level_No)*3 + 1)
+	pipeline_sprite.position = Vector2(585 + 5 * level_No + horizontal_space_for_wall_sprite ,480 + spritesize * 2 * (n_sprite_vertically+level_No) - distance_between_levels * level_No )
+	pipeline_sprite.scale = Vector2(1.0,(n_sprite_vertically+level_No)*4 + 1)
 	add_child(pipeline_sprite)
 	
 	pipeline_sprite = pipeline_sprite_scene.instantiate()
@@ -35,8 +35,8 @@ func add_pipelines(level_No :int) -> void:
 	
 	if (level_No >0):
 		pipeline_sprite = pipeline_sprite_scene.instantiate()
-		pipeline_sprite.position = Vector2(585 - 5 * level_No - horizontal_space_for_wall_sprite ,480 + spritesize * 1.5 * (n_sprite_vertically+level_No) - distance_between_levels * level_No )
-		pipeline_sprite.scale = Vector2(1.0,(n_sprite_vertically+level_No)*3 + 1)
+		pipeline_sprite.position = Vector2(585 - 5 * level_No - horizontal_space_for_wall_sprite ,480 + spritesize * 2 * (n_sprite_vertically+level_No) - distance_between_levels * level_No )
+		pipeline_sprite.scale = Vector2(1.0,(n_sprite_vertically+level_No)*4 + 1)
 		add_child(pipeline_sprite)
 	
 		pipeline_sprite = pipeline_sprite_scene.instantiate()

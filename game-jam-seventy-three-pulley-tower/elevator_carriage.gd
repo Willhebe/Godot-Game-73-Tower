@@ -8,6 +8,7 @@ var maxFloor = 1
 var new_velocity = 0
 var initial_child_count = 0
 var max_capacity = 4
+var previously_on_floor = true
 @export var material_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
@@ -20,31 +21,28 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	currentFloor = get_parent().get_current_floor()
 	new_velocity = get_parent().get_velocity_y()
-	
-	
-	
-	
-	
 	var test = position.y + (140 * currentFloor)
+	
 	if (test < 533 - 10):
 		# too high move down
 		new_velocity = 1
 		position.y += delta * 200 * new_velocity
 		get_parent().set_velocity_y(1)
+		previously_on_floor = false
 	elif ( test > 533 +10):
 		# too low move up
 		new_velocity = -1
 		position.y += delta * 200 * new_velocity
 		get_parent().set_velocity_y(-1)
+		previously_on_floor = false
 	else:
-		if (test > 522 && test < 544):
-			print(test)
-		# if at correct floor stay still
-		new_velocity = 0
-		get_parent().set_velocity_y(0)
-		position.y = 533 -(140 * currentFloor)
-		currentFloorPosition = currentFloor
-	
+		if (!previously_on_floor):
+			new_velocity = 0
+			get_parent().set_velocity_y(0)
+			position.y = 533 -(140 * currentFloor)
+			currentFloorPosition = currentFloor
+			get_parent().get_parent().get_node("WorkerCollection").set_all_workers_not_stopped(currentFloor)
+			previously_on_floor = true
 
 	if (get_child_count()>initial_child_count):
 		var material_placeholder  = get_child(initial_child_count) 

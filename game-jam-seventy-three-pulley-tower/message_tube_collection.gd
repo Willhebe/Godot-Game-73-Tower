@@ -35,6 +35,12 @@ func _process(delta: float) -> void:
 		var temp_velocity_y =  child.get_node("VelocityComponent").get_velocity_y()
 		var temp_velocity_x = child.get_node("VelocityComponent").get_velocity_x()
 		
+		var temp_level = child.get_node("LevelNumberComponent").get_level_number()
+		var horizontal_space_for_wall_sprite = 50
+		if (temp_level < 4): 
+			horizontal_space_for_wall_sprite =0
+
+		
 		temp_position += Vector2(delta*temp_velocity_x,delta * temp_velocity_y)
 		
 		if (child.get_node("LeftOrRightComponent").get_leftT_or_rightF()):
@@ -64,7 +70,6 @@ func _process(delta: float) -> void:
 			
 		# if on right do it different	
 		else:
-			var temp_level = child.get_node("LevelNumberComponent").get_level_number()
 			
 			if (temp_position.x > 587 + 5* temp_level + 400):
 				temp_velocity_x = -150

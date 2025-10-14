@@ -109,10 +109,12 @@ autoplay = "default"
 [node name="LeftWallSprite" parent="." instance=ExtResource("2_jrnpn")]
 position = Vector2(0, 460)
 rotation = 1.5708
+scale = Vector2(2.4, 1.2)
 
 [node name="RightWallSprite" parent="." instance=ExtResource("2_jrnpn")]
 position = Vector2(1166, 463)
 rotation = 1.5708
+scale = Vector2(2.4, 1.2)
 
 [node name="MaterialsNeededCollection" type="Node2D" parent="."]
 script = ExtResource("7_prkm7")

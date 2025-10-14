@@ -62,8 +62,7 @@ func _process(delta: float) -> void:
 	if (!level_been_activated && get_node("LevelNumberComponent").get_level_number() >= 2 && get_node("LevelScoreGoalComponentNode2D").isActive()):
 		level_been_activated = true
 		gold_key_dismiss_in_progress = true
-		
-		get_child(get_child_count() - 3).get_node("AnimatedSprite2D").play("turning")
+		get_node("GoldKeyNode2D").get_node("AnimatedSprite2D").play("turning")
 	if (gold_key_dismiss_in_progress):
 		delta_count += delta
 		if (delta_count > 3):
@@ -81,6 +80,13 @@ func _process(delta: float) -> void:
 			get_parent().get_parent().get_node("WorkerCollection").add_child(left_worker)
 			remove_child(right_worker)
 			get_parent().get_parent().get_node("WorkerCollection").add_child(right_worker)
+			
+			#instantiate new level and add to levelcollection
+			
+			get_parent().instantiate_level(get_node("LevelNumberComponent").get_level_number()+1) 
+			get_parent().get_parent().get_node("Elevator/ElevatorCarriage").setMaxFloor(get_node("LevelNumberComponent").get_level_number())
+			get_parent().get_parent().get_node("Elevator").setMaxFloor(get_node("LevelNumberComponent").get_level_number())
+			
 	pass
 
 func isLevelFinishedActivating()-> bool:

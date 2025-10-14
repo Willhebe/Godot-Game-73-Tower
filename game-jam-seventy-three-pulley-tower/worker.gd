@@ -1,7 +1,7 @@
 extends Area2D
 enum Materials {STEEL,CABLE,GLASS,CONCRETE,PIPES}
 @export var speed = 400
-var screen_size
+
 var velocity_value = Vector2.ZERO
 var start_position = Vector2.ZERO
 var initial_child_count = 4
@@ -14,7 +14,7 @@ var inStopZone = false
  
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
+
 	start_position = position
 	initial_child_count = get_child_count()
 	#get_parent().get_node("MaterialsNeededTextLabel").clear()
@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 	
 		
 	position += velocity_value * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	
 	
 	if (childcount > initial_child_count):
 			

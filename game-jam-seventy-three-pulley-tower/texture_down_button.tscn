@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://wwwq4cnnhwdl"]
+
+[ext_resource type="Texture2D" uid="uid://bkfiynk7tk0sv" path="res://GodotImages/down_arrow.png (2).png" id="1_4lps7"]
+[ext_resource type="Texture2D" uid="uid://citv3kyghvukf" path="res://GodotImages/down_arrow_pressed.png (2).png" id="2_8c8u5"]
+[ext_resource type="Script" path="res://texture_down_button.gd" id="3_daj0n"]
+
+[node name="TextureDownButton" type="TextureButton"]
+offset_left = 631.0
+offset_top = 50.0
+offset_right = 671.0
+offset_bottom = 90.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("1_4lps7")
+texture_pressed = ExtResource("2_8c8u5")
+script = ExtResource("3_daj0n")

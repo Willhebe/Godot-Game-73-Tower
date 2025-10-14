@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://drugei72tv881"]
+[gd_scene load_steps=32 format=3 uid="uid://drugei72tv881"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_7ljjd"]
 [ext_resource type="PackedScene" uid="uid://sdjhc7nyp2fi" path="res://steel_sprite_node.tscn" id="2_2buab"]
@@ -27,7 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://byu8xan0pg1pc" path="res://GodotImages/pause_sprite_1.png" id="24_qh464"]
 [ext_resource type="Script" path="res://rich_text_label.gd" id="26_kyu6p"]
 [ext_resource type="Theme" uid="uid://n8qqfcclbwqo" path="res://main_game.tres" id="26_qenfs"]
-[ext_resource type="Script" path="res://temp_pause_indicator.gd" id="26_vc7tb"]
+[ext_resource type="PackedScene" uid="uid://wwwq4cnnhwdl" path="res://texture_down_button.tscn" id="28_vehby"]
+[ext_resource type="Script" path="res://color_rect_2.gd" id="29_g7xw5"]
+[ext_resource type="PackedScene" uid="uid://dku8pd43m8nby" path="res://textured_up_button.tscn" id="29_v414g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ugty"]
 animations = [{
@@ -123,6 +125,16 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mns3l")
 autoplay = "default"
 
+[node name="LeftWallSprite" parent="." instance=ExtResource("2_jrnpn")]
+position = Vector2(0, 460)
+rotation = 1.5708
+scale = Vector2(2.4, 1.2)
+
+[node name="RightWallSprite" parent="." instance=ExtResource("2_jrnpn")]
+position = Vector2(1166, 463)
+rotation = 1.5708
+scale = Vector2(2.4, 1.2)
+
 [node name="MaterialsNeededCollection" type="Node2D" parent="."]
 script = ExtResource("7_prkm7")
 materials_scene = ExtResource("5_miitv")
@@ -172,4 +184,10 @@ texture_normal = ExtResource("23_62fwq")
 texture_pressed = ExtResource("24_qh464")
 script = ExtResource("23_tse1d")
 
+[node name="TextureDownButton" parent="." instance=ExtResource("28_vehby")]
+
+[node name="TexturedUpButton" parent="." instance=ExtResource("29_v414g")]
+
 [connection signal="pressed" from="PauseNode/PauseTextureButton" to="PauseNode/PauseTextureButton" method="_on_pressed"]
+[connection signal="pressed" from="TextureDownButton" to="Elevator" method="_on_texture_down_button_pressed"]
+[connection signal="pressed" from="TexturedUpButton" to="Elevator" method="_on_textured_up_button_pressed"]

@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 				temp_velocity_x = -150
 				temp_position.y = 326
 		
-			elif (temp_velocity_x > 0 && temp_position.y < 330 && temp_position.x > 581):
+			elif (temp_velocity_x > 0 && temp_position.y < 330 + 140 - 140 * temp_level && temp_position.x > 587 - 5 * temp_level - horizontal_space_for_wall_sprite):
 				child.get_node("MessageTubeSprite2D").rotation = 0
 				temp_velocity_x = 0
 				temp_velocity_y = 150
@@ -82,7 +82,7 @@ func _process(delta: float) -> void:
 				temp_velocity_x = 150
 				temp_position.y = 326 + 140 - 140 * temp_level 
 		
-			elif (temp_velocity_x < 0 && temp_position.y < 330 + 140 - 140 * temp_level&& temp_position.x < 581):
+			elif (temp_velocity_x < 0 && temp_position.y < 330 + 140 - 140 * temp_level&& temp_position.x <  587 + 5 * temp_level + horizontal_space_for_wall_sprite):
 				child.get_node("MessageTubeSprite2D").rotation = 0
 				temp_velocity_x = 0
 				temp_velocity_y = 150

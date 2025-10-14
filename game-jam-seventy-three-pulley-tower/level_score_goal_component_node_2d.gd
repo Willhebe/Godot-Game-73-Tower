@@ -6,11 +6,32 @@ var is_active = false
 func _ready() -> void:
 	var level_number = get_parent().get_node("LevelNumberComponent").get_level_number()
 	match level_number:
-		0,1:
+		0:
+			is_active = true
+			level_score_goal = 0
+		1:
 			is_active = true
 			level_score_goal = 0
 		2:
 			level_score_goal = 10
+			if (Testing.TestingShortLevelGoals):
+				level_score_goal = 2
+		3:
+			level_score_goal = 25
+			if (Testing.TestingShortLevelGoals):
+				level_score_goal = 4
+		4:
+			level_score_goal = 50
+			if (Testing.TestingShortLevelGoals):
+				level_score_goal = 6
+		_:
+			level_score_goal = 100 * level_number - 400
+			if (Testing.TestingShortLevelGoals):
+				level_score_goal = 2 * level_number
+		
+		
+		
+			
 	pass # Replace with function body.
 
 func get_level_score_goal() -> int:

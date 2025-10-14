@@ -5,9 +5,10 @@ var currentFloor = 0
 # current floor at. if not at a floor = -100
 var currentFloorPosition = 0
 var maxFloor = 1
-var velocity = 0
+var new_velocity = 0
 var initial_child_count = 0
 var max_capacity = 4
+var previously_on_floor = true
 @export var material_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
@@ -18,47 +19,31 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	maxFloor = get_parent().get_parent().get_node("LevelCollection").getMaximumFloor()
-	if velocity > 0:
-		position.y -= delta * 200
-		if currentFloor == 2:
-			if position.y < 255:
-				position.y = 255
-				velocity = 0
-				currentFloorPosition = 2
-				get_parent().get_parent().get_node("WorkerCollection").set_all_workers_not_stopped(2)
-			else:
-				currentFloorPosition = -100
-		if currentFloor == 1:
-			if position.y < 395:
-				position.y = 395
-				velocity = 0
-				currentFloorPosition = 1
-				get_parent().get_parent().get_node("WorkerCollection").set_all_workers_not_stopped(1)
-			else:
-				currentFloorPosition = -100
-				
-	if velocity < 0:
-		position.y += delta * 200
-		if currentFloor == 1:
-			if position.y > 395:
-				position.y  = 395
-				velocity = 0
-				currentFloorPosition = 1
-				get_parent().get_parent().get_node("WorkerCollection").set_all_workers_not_stopped(1)
-			else:
-				currentFloorPosition = -100
-		if currentFloor == 0:
-			
-						
-			if position.y > 533:
-				position.y = 533
-				velocity = 0
-				currentFloorPosition = 0
-				get_parent().get_parent().get_node("WorkerCollection").set_all_workers_not_stopped(0)
-			else:
-				currentFloorPosition = -100
-	#print(get_child_count()+1000)
+	currentFloor = get_parent().get_current_floor()
+	new_velocity = get_parent().get_velocity_y()
+	var test = position.y + (140 * currentFloor)
+	
+	if (test < 533 - 10):
+		# too high move down
+		new_velocity = 1
+		position.y += delta * 200 * new_velocity
+		get_parent().set_velocity_y(1)
+		previously_on_floor = false
+	elif ( test > 533 +10):
+		# too low move up
+		new_velocity = -1
+		position.y += delta * 200 * new_velocity
+		get_parent().set_velocity_y(-1)
+		previously_on_floor = false
+	else:
+		if (!previously_on_floor):
+			new_velocity = 0
+			get_parent().set_velocity_y(0)
+			position.y = 533 -(140 * currentFloor)
+			currentFloorPosition = currentFloor
+			get_parent().get_parent().get_node("WorkerCollection").set_all_workers_not_stopped(currentFloor)
+			previously_on_floor = true
+
 	if (get_child_count()>initial_child_count):
 		var material_placeholder  = get_child(initial_child_count) 
 		if (material_placeholder.get_node("MaterialNameComponent").get_material_name() == Materials.STEEL):
@@ -96,21 +81,12 @@ func _process(delta: float) -> void:
 			material_placeholder.position = Vector2(5.0,7.0)
 			material_placeholder.scale = Vector2(0.3,0.3)
 	
+	get_parent().set_velocity_y(new_velocity)
+	
 func setMaxFloor(newMaxFloor) -> void:
 	maxFloor = newMaxFloor
 
 
-func _on_textured_up_button_pressed() -> void:
-	velocity = 1
-	if currentFloor < maxFloor:
-		currentFloor += 1
-
-
-func _on_texture_down_button_pressed() -> void:
-	velocity = -1
-	if currentFloor > 0:
-		currentFloor -= 1
-		
 func getCurrentFloor() -> int:
 	return currentFloor
 	
@@ -118,7 +94,7 @@ func get_current_floor_position() -> int:
 	return currentFloorPosition 
 	
 func getVelocity() -> int:
-	return velocity
+	return new_velocity
 	
 func has_materials() -> bool:
 	return get_child_count() > 0

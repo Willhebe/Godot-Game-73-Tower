@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dku8pd43m8nby"]
+
+[ext_resource type="Texture2D" uid="uid://bsxbrtvksx1w5" path="res://GodotImages/up_arrow.png (2).png" id="1_4txyq"]
+[ext_resource type="Texture2D" uid="uid://cmsfene458gjh" path="res://GodotImages/up_arrow_pressed.png (2).png" id="2_hb8qw"]
+[ext_resource type="Script" path="res://textured_up_button.gd" id="3_t8ckd"]
+
+[node name="TexturedUpButton" type="TextureButton"]
+offset_left = 430.0
+offset_top = 60.0
+offset_right = 462.0
+offset_bottom = 92.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("1_4txyq")
+texture_pressed = ExtResource("2_hb8qw")
+script = ExtResource("3_t8ckd")

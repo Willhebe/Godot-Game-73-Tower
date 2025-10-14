@@ -84,7 +84,6 @@ func set_materials_needed_amount() -> void:
 	if (amountMaterialsNeeded[Materials.CABLE] >1):
 		text +=  "\n          : " +  str(amountMaterialsNeeded[Materials.CABLE]) #+ "\n" + Materials.keys()[Materials.CABLE] + " : " +  str(amountMaterialsNeeded[Materials.CABLE])
 	
-	#print(text) 
 
 func get_amount_materials_needed(material_name: int) -> int:
 	return amountMaterialsNeeded[material_name]

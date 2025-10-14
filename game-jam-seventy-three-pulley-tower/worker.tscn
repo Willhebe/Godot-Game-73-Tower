@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dujmi2i7ajlf3"]
+[gd_scene load_steps=10 format=3 uid="uid://dujmi2i7ajlf3"]
 
 [ext_resource type="Texture2D" uid="uid://cq8c5xe6k666c" path="res://GodotImages/New Piskel-1.png.png" id="1_2ienw"]
 [ext_resource type="Script" path="res://worker.gd" id="1_ha3ph"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://47ir7rb6yhlb" path="res://texture_left_button.tscn" id="6_ouj6e"]
 [ext_resource type="PackedScene" uid="uid://c5qwvti84yb5k" path="res://texture_right_button.tscn" id="6_t4iyi"]
 [ext_resource type="PackedScene" uid="uid://dioxowur68i66" path="res://left_or_right_component.tscn" id="7_7iy5t"]
-[ext_resource type="PackedScene" uid="uid://dny8n8lpmufwo" path="res://level_number_component.tscn" id="7_tiun7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p3meh"]
 animations = [{
@@ -59,8 +58,6 @@ offset_top = -17.3333
 offset_right = 41.6667
 offset_bottom = 14.6667
 metadata/_edit_group_ = true
-
-[node name="LevelNumberComponent" parent="." instance=ExtResource("7_tiun7")]
 
 [node name="LeftOrRightComponent" parent="." instance=ExtResource("7_7iy5t")]
 

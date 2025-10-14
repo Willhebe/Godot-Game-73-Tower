@@ -22,6 +22,14 @@ func _ready() -> void:
 	
 	pass # Replace with function body.
 
+func instantiate_level(level_number : int )-> void:
+	var level = level_scene.instantiate()
+	level.get_node("LevelNumberComponent").set_level_number(level_number)
+	var gold_key = gold_key_scene.instantiate()
+	gold_key.position = Vector2(580,525 - 140 * level_number )
+	level.add_child(gold_key)
+	add_child(level)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

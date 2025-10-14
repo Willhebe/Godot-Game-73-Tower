@@ -9,16 +9,16 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	for child in get_parent().get_children():
 		# uncomment following to make screen scroll up and down - TODO make this happen when have more levels
 		# if a child has the method dont_scroll don't do anything to it. 
-		#if !child.has_method("dont_scroll"):
-			#child.position += Vector2(0,scroll_velocity_y * delta)
+		if !child.has_method("dont_scroll"):
+			child.position += Vector2(0,scroll_velocity_y * delta)
 		pass
 	if (position.y < -100):
 		scroll_velocity_y *=-1
-	elif (position.y > 100):
+	elif (position.y > 400):
 		scroll_velocity_y *=-1
 	
 	pass

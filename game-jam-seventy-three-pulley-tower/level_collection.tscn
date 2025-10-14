@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://tkmf8leiraey"]
+
+[ext_resource type="Script" path="res://level_collection.gd" id="1_a0f6b"]
+[ext_resource type="PackedScene" uid="uid://fayehxqie1yc" path="res://level_2d.tscn" id="2_73kh8"]
+[ext_resource type="PackedScene" uid="uid://druwp00p2ntgp" path="res://gold_key_node_2d.tscn" id="3_yu8v8"]
+
+[node name="LevelCollection" type="Node2D"]
+script = ExtResource("1_a0f6b")
+level_scene = ExtResource("2_73kh8")
+gold_key_scene = ExtResource("3_yu8v8")

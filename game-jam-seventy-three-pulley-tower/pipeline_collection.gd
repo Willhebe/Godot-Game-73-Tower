@@ -8,7 +8,8 @@ var distance_between_levels = 140
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	#level 1 piepline
+	add_pipelines(0)
+	add_pipelines(1)
 	
 	pass # Replace with function body.
 
@@ -45,15 +46,3 @@ func add_pipelines(level_No :int) -> void:
 		pipeline_sprite.scale = Vector2(1.0,2*(n_sprite_horizontally)+1 - (horizontal_space_for_wall_sprite+5*level_No)/spritesize)
 		add_child(pipeline_sprite)
 	
-	pipeline_sprite = pipeline_sprite_scene.instantiate()
-	pipeline_sprite.position = Vector2(585 ,480 + 160 )
-	pipeline_sprite.scale = Vector2(1.0,11.0)
-	add_child(pipeline_sprite)
-	
-	pipeline_sprite = pipeline_sprite_scene.instantiate()
-	pipeline_sprite.rotation = PI/2 
-	pipeline_sprite.position = Vector2(585 + 192 + 16 ,480 - 16)
-	pipeline_sprite.scale = Vector2(1.0,13.0)
-	add_child(pipeline_sprite)
-	
-	pass # Replace with function body.

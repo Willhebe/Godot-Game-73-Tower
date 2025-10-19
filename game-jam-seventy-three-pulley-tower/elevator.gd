@@ -5,6 +5,7 @@ var floor1IsClosed = true
 var floor2IsClosed = true
 var currentFloor = 0
 var maxFloor = 1
+var distance_between_cable_sprites = 86
 
 
 
@@ -121,3 +122,6 @@ func set_velocity_y(new_velocity:int)->void:
 		
 func setMaxFloor(newMaxFloor) -> void:
 	maxFloor = newMaxFloor
+
+func add_cables_raise_pulley()->void:
+	$PulleyAnimatedSprite2D.position.y -=140

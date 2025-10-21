@@ -94,6 +94,7 @@ func _process(delta: float) -> void:
 			get_parent().get_parent().get_node("Elevator").setMaxFloor(get_node("LevelNumberComponent").get_level_number())
 			get_parent().get_parent().get_node("ScrollingNode").add_level_to_max_scroll_height()
 			get_parent().get_parent().get_node("Elevator").add_cables_raise_pulley()
+			get_parent().get_parent().get_node("Elevator/CablesCollection").add_new_level_cable_sprites(get_node("LevelNumberComponent").get_level_number())
 	pass
 
 func isLevelFinishedActivating()-> bool:

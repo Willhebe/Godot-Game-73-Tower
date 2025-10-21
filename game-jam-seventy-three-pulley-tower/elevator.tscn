@@ -1,13 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://w8muw37seh0u"]
+[gd_scene load_steps=15 format=3 uid="uid://w8muw37seh0u"]
 
 [ext_resource type="Texture2D" uid="uid://c508ne4kb8im4" path="res://GodotImages/floor.png" id="1_utkql"]
 [ext_resource type="Script" path="res://elevator.gd" id="1_yn85s"]
 [ext_resource type="Texture2D" uid="uid://bcxevpim5udwd" path="res://GodotImages/pulley.png.png" id="2_s25cu"]
 [ext_resource type="Texture2D" uid="uid://b0emj7rhb5vkx" path="res://GodotImages/pulley2.png.png" id="4_remfy"]
 [ext_resource type="Texture2D" uid="uid://btjovi3gmxoor" path="res://GodotImages/pulley3.png.png" id="5_ittca"]
-[ext_resource type="Texture2D" uid="uid://owa72qd2g2fd" path="res://GodotImages/elevatorCables1.png" id="10_7x3x1"]
-[ext_resource type="Texture2D" uid="uid://deiua1envy2rg" path="res://GodotImages/elevatorCables2.png" id="11_5pkpl"]
-[ext_resource type="Texture2D" uid="uid://c7op1131lcmlw" path="res://GodotImages/elevatorCables3.png" id="12_tjo0p"]
+[ext_resource type="Script" path="res://cables_collection.gd" id="6_rmml1"]
+[ext_resource type="PackedScene" uid="uid://3ha05uc1e7wv" path="res://cables_animated_sprite_2d.tscn" id="7_35dtv"]
 [ext_resource type="PackedScene" uid="uid://bef04xxpkc0mi" path="res://elevator_carriage.tscn" id="13_x1ihw"]
 [ext_resource type="Texture2D" uid="uid://ds4w72bxsjnn8" path="res://GodotImages/ElevatorDoor4.png" id="14_nnh6k"]
 [ext_resource type="Texture2D" uid="uid://c48f8tlgmiio7" path="res://GodotImages/ElevatorDoor1.png" id="15_ncgjf"]
@@ -47,45 +46,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_ittca")
-}],
-"loop": true,
-"name": &"up",
-"speed": 12.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uqisl"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_7x3x1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_tjo0p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_5pkpl")
-}],
-"loop": true,
-"name": &"down",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_7x3x1")
-}],
-"loop": true,
-"name": &"steady",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_7x3x1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_5pkpl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_tjo0p")
 }],
 "loop": true,
 "name": &"up",
@@ -150,41 +110,9 @@ scale = Vector2(3.6875, 2.875)
 sprite_frames = SubResource("SpriteFrames_c650x")
 animation = &"down"
 
-[node name="CablesAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(579, 182)
-scale = Vector2(3.6875, 2.875)
-sprite_frames = SubResource("SpriteFrames_uqisl")
-animation = &"down"
-
-[node name="CablesAnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(579, 268)
-scale = Vector2(3.6875, 2.875)
-sprite_frames = SubResource("SpriteFrames_uqisl")
-animation = &"down"
-
-[node name="CablesAnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-position = Vector2(579, 353)
-scale = Vector2(3.6875, 2.875)
-sprite_frames = SubResource("SpriteFrames_uqisl")
-animation = &"down"
-
-[node name="CablesAnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
-position = Vector2(579, 439)
-scale = Vector2(3.6875, 2.875)
-sprite_frames = SubResource("SpriteFrames_uqisl")
-animation = &"down"
-
-[node name="CablesAnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
-position = Vector2(579, 523)
-scale = Vector2(3.6875, 2.875)
-sprite_frames = SubResource("SpriteFrames_uqisl")
-animation = &"down"
-
-[node name="CablesAnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
-position = Vector2(579, 607)
-scale = Vector2(3.6875, 2.875)
-sprite_frames = SubResource("SpriteFrames_uqisl")
-animation = &"down"
+[node name="CablesCollection" type="Node2D" parent="."]
+script = ExtResource("6_rmml1")
+cable_sprite_scene = ExtResource("7_35dtv")
 
 [node name="ElevatorCarriage" parent="." instance=ExtResource("13_x1ihw")]
 position = Vector2(581, 533)

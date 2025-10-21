@@ -52,44 +52,23 @@ func _process(_delta: float) -> void:
 	
 	if (velocity.y == 0):
 		$PulleyAnimatedSprite2D.play("steady")
-		$CablesAnimatedSprite2D.play("steady")
-		$CablesAnimatedSprite2D2.play("steady")
-		$CablesAnimatedSprite2D3.play("steady")
-		$CablesAnimatedSprite2D4.play("steady")
-		$CablesAnimatedSprite2D5.play("steady")
-		$CablesAnimatedSprite2D6.play("steady")
+		get_node("CablesCollection").play("steady")
+		
 		
 		
 	if (velocity.y > 0):
 		
 		$PulleyAnimatedSprite2D.animation = "up"
-		$CablesAnimatedSprite2D.animation = "up"
-		$CablesAnimatedSprite2D2.animation = "up"
-		$CablesAnimatedSprite2D3.animation = "up"
-		$CablesAnimatedSprite2D4.animation = "up"
-		$CablesAnimatedSprite2D5.animation = "up"
-		$CablesAnimatedSprite2D6.animation = "up"
+		get_node("CablesCollection").play("up")
 		
 	elif (velocity.y < 0):
 		$PulleyAnimatedSprite2D.animation = "down"
-		$CablesAnimatedSprite2D.animation = "down"
-		$CablesAnimatedSprite2D2.animation = "down"
-		$CablesAnimatedSprite2D3.animation = "down"
-		$CablesAnimatedSprite2D4.animation = "down"
-		$CablesAnimatedSprite2D5.animation = "down"
-		$CablesAnimatedSprite2D6.animation = "down"
-		
+		get_node("CablesCollection").play("down")
 			
 			
 	else:
 		$PulleyAnimatedSprite2D.animation = "steady"
-		$CablesAnimatedSprite2D.animation = "steady"
-		$CablesAnimatedSprite2D2.animation = "steady"
-		$CablesAnimatedSprite2D3.animation = "steady"
-		$CablesAnimatedSprite2D4.animation = "steady"
-		$CablesAnimatedSprite2D5.animation = "steady"
-		$CablesAnimatedSprite2D6.animation = "steady"
-
+		get_node("CablesCollection").play("steady")
 
 
 func _on_textured_up_button_pressed() -> void:

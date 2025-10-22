@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 		else:
 			
 			
-			if (temp_position.x > 587 + 5* temp_level + 400):
+			if (temp_position.x > 587  + 400):
 				temp_velocity_x = -150
 				var random = RandomNumberGenerator.new()
 				random.randomize()

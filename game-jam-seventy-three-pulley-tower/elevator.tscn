@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://w8muw37seh0u"]
+[gd_scene load_steps=12 format=3 uid="uid://w8muw37seh0u"]
 
 [ext_resource type="Texture2D" uid="uid://c508ne4kb8im4" path="res://GodotImages/floor.png" id="1_utkql"]
 [ext_resource type="Script" path="res://elevator.gd" id="1_yn85s"]
@@ -7,11 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://btjovi3gmxoor" path="res://GodotImages/pulley3.png.png" id="5_ittca"]
 [ext_resource type="Script" path="res://cables_collection.gd" id="6_rmml1"]
 [ext_resource type="PackedScene" uid="uid://3ha05uc1e7wv" path="res://cables_animated_sprite_2d.tscn" id="7_35dtv"]
+[ext_resource type="PackedScene" uid="uid://cm753tr4kwqax" path="res://door_animated_sprite_2d.tscn" id="9_na8xg"]
+[ext_resource type="Script" path="res://door_sprite_collection.gd" id="13_edtny"]
 [ext_resource type="PackedScene" uid="uid://bef04xxpkc0mi" path="res://elevator_carriage.tscn" id="13_x1ihw"]
-[ext_resource type="Texture2D" uid="uid://ds4w72bxsjnn8" path="res://GodotImages/ElevatorDoor4.png" id="14_nnh6k"]
-[ext_resource type="Texture2D" uid="uid://c48f8tlgmiio7" path="res://GodotImages/ElevatorDoor1.png" id="15_ncgjf"]
-[ext_resource type="Texture2D" uid="uid://dytqjkluagjrj" path="res://GodotImages/ElevatorDoor2.png" id="16_dqbyx"]
-[ext_resource type="Texture2D" uid="uid://dtgxc0yhe5n7o" path="res://GodotImages/ElevatorDoor3.png" id="17_u77pm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c650x"]
 animations = [{
@@ -52,43 +50,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_b2q1t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_ncgjf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_dqbyx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_u77pm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_nnh6k")
-}],
-"loop": false,
-"name": &"closing",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_nnh6k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_u77pm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_dqbyx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_ncgjf")
-}],
-"loop": false,
-"name": &"opening",
-"speed": 3.0
-}]
-
 [node name="Elevator" type="Node2D"]
 script = ExtResource("1_yn85s")
 
@@ -118,23 +79,6 @@ cable_sprite_scene = ExtResource("7_35dtv")
 position = Vector2(581, 533)
 scale = Vector2(2, 1.78125)
 
-[node name="Floor0AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(580, 527.5)
-scale = Vector2(3.375, 3.28125)
-sprite_frames = SubResource("SpriteFrames_b2q1t")
-animation = &"closing"
-autoplay = "opening"
-
-[node name="Floor1AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(582, 380)
-scale = Vector2(3.375, 3.28125)
-sprite_frames = SubResource("SpriteFrames_b2q1t")
-animation = &"closing"
-autoplay = "closing"
-
-[node name="Floor2AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(582, 237)
-scale = Vector2(3.375, 3.28125)
-sprite_frames = SubResource("SpriteFrames_b2q1t")
-animation = &"closing"
-autoplay = "closing"
+[node name="DoorSpriteCollection" type="Node2D" parent="."]
+script = ExtResource("13_edtny")
+door_sprite_scene = ExtResource("9_na8xg")

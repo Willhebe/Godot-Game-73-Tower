@@ -17,39 +17,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
-	match currentFloor:
-		0:
-			if !floor1IsClosed:
-				$Floor1AnimatedSprite2D.play("closing")
-				floor1IsClosed = true
-			if !floor2IsClosed:
-				$Floor2AnimatedSprite2D.play("closing")
-				floor2IsClosed = true
-			if floor0IsClosed:
-				$Floor0AnimatedSprite2D.play("opening")
-				floor0IsClosed = false	
-		1:
-			if !floor0IsClosed:
-				$Floor0AnimatedSprite2D.play("closing")
-				floor0IsClosed = true
-			if !floor2IsClosed:
-				$Floor2AnimatedSprite2D.play("closing")
-				floor2IsClosed = true
-			if floor1IsClosed:
-				$Floor1AnimatedSprite2D.play("opening")
-				floor1IsClosed = false	
-		2:
-			if !floor0IsClosed:
-				$Floor0AnimatedSprite2D.play("closing")
-				floor0IsClosed = true
-			if !floor1IsClosed:
-				$Floor1AnimatedSprite2D.play("closing")
-				floor1IsClosed = true
-			if floor2IsClosed:
-				$Floor2AnimatedSprite2D.play("opening")
-				floor2IsClosed = false	
-	
-	
 	if (velocity.y == 0):
 		$PulleyAnimatedSprite2D.play("steady")
 		get_node("CablesCollection").play("steady")

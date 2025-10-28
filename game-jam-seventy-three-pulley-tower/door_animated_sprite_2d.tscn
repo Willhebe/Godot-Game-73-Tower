@@ -52,8 +52,6 @@ animation = &"closing"
 autoplay = "opening"
 
 [node name="IsClosedComponent" type="Node2D" parent="."]
-scale = Vector2(1, 1)
 script = ExtResource("5_qvgu6")
 
 [node name="LevelNumberComponent" parent="." instance=ExtResource("5_eb87s")]
-scale = Vector2(1, 1)

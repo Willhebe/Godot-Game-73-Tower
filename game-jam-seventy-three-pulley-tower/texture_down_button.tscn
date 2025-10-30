@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://texture_down_button.gd" id="3_daj0n"]
 
 [node name="TextureDownButton" type="TextureButton"]
-offset_left = 631.0
+offset_left = 800.0
 offset_top = 50.0
-offset_right = 671.0
+offset_right = 840.0
 offset_bottom = 90.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("1_4lps7")

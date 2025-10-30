@@ -14,20 +14,20 @@ func _ready() -> void:
 			level_score_goal = 0
 		2:
 			level_score_goal = 10
-			if (Testing.TestingShortLevelGoals):
-				level_score_goal = 2
+			
 		3:
 			level_score_goal = 25
-			if (Testing.TestingShortLevelGoals):
-				level_score_goal = 4
+			
 		4:
 			level_score_goal = 50
-			if (Testing.TestingShortLevelGoals):
-				level_score_goal = 6
+			
 		_:
 			level_score_goal = 100 * level_number - 400
-			if (Testing.TestingShortLevelGoals):
-				level_score_goal = 2 * level_number
+			
+	if (Testing.TestingShortLevelGoals):
+		if (level_number > 1):
+			
+			level_score_goal = 2 * (level_number -1)
 		
 		
 		

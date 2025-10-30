@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://3ha05uc1e7wv"]
+
+[ext_resource type="Texture2D" uid="uid://owa72qd2g2fd" path="res://GodotImages/elevatorCables1.png" id="1_g8shj"]
+[ext_resource type="Texture2D" uid="uid://c7op1131lcmlw" path="res://GodotImages/elevatorCables3.png" id="2_toe7f"]
+[ext_resource type="Texture2D" uid="uid://deiua1envy2rg" path="res://GodotImages/elevatorCables2.png" id="3_x1h6c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqisl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g8shj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_toe7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x1h6c")
+}],
+"loop": true,
+"name": &"down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g8shj")
+}],
+"loop": true,
+"name": &"steady",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g8shj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x1h6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_toe7f")
+}],
+"loop": true,
+"name": &"up",
+"speed": 12.0
+}]
+
+[node name="CablesAnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(579, 182)
+scale = Vector2(3.6875, 2.875)
+sprite_frames = SubResource("SpriteFrames_uqisl")
+animation = &"down"

@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func add_message_tube(isLeft :bool, level_No :int) -> void: 
 	var message_tube_sprite = message_tube_sprite_scene.instantiate()
-	var horizontal_space_for_wall_sprite = 50
+	var horizontal_space_for_wall_sprite = 48
 	if (level_No < 4): 
 		horizontal_space_for_wall_sprite =0
 	if (isLeft):
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		var temp_velocity_y =  child.get_node("VelocityComponent").get_velocity_y()
 		var temp_velocity_x = child.get_node("VelocityComponent").get_velocity_x()
 		var temp_level = child.get_node("LevelNumberComponent").get_level_number()
-		var horizontal_space_for_wall_sprite = 50
+		var horizontal_space_for_wall_sprite = 48
 		if (temp_level < 4): 
 			horizontal_space_for_wall_sprite =0
 		
@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 		else:
 			
 			
-			if (temp_position.x > 587 + 5* temp_level + 400):
+			if (temp_position.x > 587  + 400):
 				temp_velocity_x = -150
 				var random = RandomNumberGenerator.new()
 				random.randomize()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://drugei72tv881"]
+[gd_scene load_steps=38 format=3 uid="uid://drugei72tv881"]
 
 [ext_resource type="Script" path="res://main_game.gd" id="1_7ljjd"]
 [ext_resource type="PackedScene" uid="uid://sdjhc7nyp2fi" path="res://steel_sprite_node.tscn" id="2_2buab"]
 [ext_resource type="Script" path="res://scrolling_node.gd" id="2_7rukm"]
 [ext_resource type="PackedScene" uid="uid://ccqoeku8r4ga6" path="res://floor._sprite.tscn" id="2_jrnpn"]
 [ext_resource type="PackedScene" uid="uid://br0bq7dlxw6ep" path="res://worker_collection.tscn" id="3_3rwbj"]
+[ext_resource type="Script" path="res://scroll_buttons_control_node.gd" id="3_js1ad"]
 [ext_resource type="PackedScene" uid="uid://dujmi2i7ajlf3" path="res://worker.tscn" id="3_t7gcd"]
 [ext_resource type="PackedScene" uid="uid://w8muw37seh0u" path="res://elevator.tscn" id="4_h4s54"]
 [ext_resource type="PackedScene" uid="uid://ceiax8yqeltoq" path="res://materials_needed_text_label.tscn" id="5_miitv"]
@@ -22,13 +23,18 @@
 [ext_resource type="Script" path="res://pause_node.gd" id="22_6cbwo"]
 [ext_resource type="Texture2D" uid="uid://bhhrg6fwvx4j3" path="res://GodotImages/pause_sprite_0.png" id="23_62fwq"]
 [ext_resource type="Script" path="res://color_rect.gd" id="23_nyxdk"]
-[ext_resource type="Script" path="res://button.gd" id="23_tse1d"]
+[ext_resource type="Script" path="res://pause_button.gd" id="23_tse1d"]
 [ext_resource type="Texture2D" uid="uid://byu8xan0pg1pc" path="res://GodotImages/pause_sprite_1.png" id="24_qh464"]
 [ext_resource type="Script" path="res://rich_text_label.gd" id="26_kyu6p"]
 [ext_resource type="Theme" uid="uid://n8qqfcclbwqo" path="res://main_game.tres" id="26_qenfs"]
 [ext_resource type="PackedScene" uid="uid://wwwq4cnnhwdl" path="res://texture_down_button.tscn" id="28_vehby"]
 [ext_resource type="Script" path="res://color_rect_2.gd" id="29_g7xw5"]
+[ext_resource type="Texture2D" uid="uid://ci0x6tv73wts6" path="res://GodotImages/scrolling_sprite_0.png" id="29_thqax"]
 [ext_resource type="PackedScene" uid="uid://dku8pd43m8nby" path="res://textured_up_button.tscn" id="29_v414g"]
+[ext_resource type="Texture2D" uid="uid://bloqm46f40ai" path="res://GodotImages/scrolling_sprite_1.png" id="30_kkexb"]
+[ext_resource type="Texture2D" uid="uid://bhepwfifuudg0" path="res://GodotImages/WillPlayPlaceholderGraphic.png" id="34_h2e6w"]
+[ext_resource type="Script" path="res://main_menu_texture_button.gd" id="34_sk5lh"]
+[ext_resource type="Script" path="res://main_menu_node_2d.gd" id="35_bqgbk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ugty"]
 animations = [{
@@ -127,6 +133,18 @@ cables_scene = ExtResource("10_aopgo")
 
 [node name="LevelCollection" parent="." instance=ExtResource("19_os1t5")]
 
+[node name="TextureDownButton" parent="." instance=ExtResource("28_vehby")]
+offset_left = 580.0
+offset_top = 250.0
+offset_right = 620.0
+offset_bottom = 290.0
+
+[node name="TexturedUpButton" parent="." instance=ExtResource("29_v414g")]
+offset_left = 500.0
+offset_top = 250.0
+offset_right = 532.0
+offset_bottom = 282.0
+
 [node name="PauseNode" type="Node" parent="."]
 script = ExtResource("22_6cbwo")
 
@@ -172,18 +190,70 @@ script = ExtResource("29_g7xw5")
 [node name="PauseTextureButton" type="TextureButton" parent="PauseNode"]
 process_mode = 3
 offset_left = 918.0
-offset_top = 14.0
+offset_top = 150.0
 offset_right = 950.0
-offset_bottom = 46.0
+offset_bottom = 182.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("23_62fwq")
 texture_pressed = ExtResource("24_qh464")
 script = ExtResource("23_tse1d")
 
-[node name="TextureDownButton" parent="." instance=ExtResource("28_vehby")]
+[node name="ScrollButtonsControlNode" type="Node" parent="PauseNode"]
+script = ExtResource("3_js1ad")
 
-[node name="TexturedUpButton" parent="." instance=ExtResource("29_v414g")]
+[node name="TopLeftScrollButton" type="TextureButton" parent="PauseNode/ScrollButtonsControlNode"]
+offset_right = 1200.0
+offset_bottom = 100.0
+texture_normal = ExtResource("29_thqax")
 
-[connection signal="pressed" from="PauseNode/PauseTextureButton" to="PauseNode/PauseTextureButton" method="_on_pressed"]
+[node name="TopCentreScrollButton" type="TextureButton" parent="PauseNode/ScrollButtonsControlNode"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TopRightScrollButton" type="TextureButton" parent="PauseNode/ScrollButtonsControlNode"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BottomLeftScrollButton" type="TextureButton" parent="PauseNode/ScrollButtonsControlNode"]
+offset_top = 550.0
+offset_right = 1200.0
+offset_bottom = 650.0
+texture_normal = ExtResource("30_kkexb")
+
+[node name="BottomCentreScrollButton" type="TextureButton" parent="PauseNode/ScrollButtonsControlNode"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BottomRightScrollButton" type="TextureButton" parent="PauseNode/ScrollButtonsControlNode"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainMenuNode2D" type="Node2D" parent="PauseNode"]
+script = ExtResource("35_bqgbk")
+
+[node name="ColorRect" type="ColorRect" parent="PauseNode/MainMenuNode2D"]
+offset_left = 72.0001
+offset_top = 108.0
+offset_right = 1048.0
+offset_bottom = 557.0
+
+[node name="MainMenuTextureButton" type="TextureButton" parent="PauseNode"]
+process_mode = 2
+offset_left = 535.0
+offset_top = 138.0
+offset_right = 1165.0
+offset_bottom = 638.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("34_h2e6w")
+texture_pressed = ExtResource("34_h2e6w")
+script = ExtResource("34_sk5lh")
+
 [connection signal="pressed" from="TextureDownButton" to="Elevator" method="_on_texture_down_button_pressed"]
 [connection signal="pressed" from="TexturedUpButton" to="Elevator" method="_on_textured_up_button_pressed"]
+[connection signal="pressed" from="PauseNode/PauseTextureButton" to="PauseNode/PauseTextureButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="PauseNode/ScrollButtonsControlNode/TopLeftScrollButton" to="PauseNode/ScrollButtonsControlNode" method="_on_top_left_scroll_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseNode/ScrollButtonsControlNode/TopLeftScrollButton" to="PauseNode/ScrollButtonsControlNode" method="_on_top_left_scroll_button_mouse_exited"]
+[connection signal="mouse_entered" from="PauseNode/ScrollButtonsControlNode/BottomLeftScrollButton" to="PauseNode/ScrollButtonsControlNode" method="_on_bottom_left_scroll_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseNode/ScrollButtonsControlNode/BottomLeftScrollButton" to="PauseNode/ScrollButtonsControlNode" method="_on_bottom_left_scroll_button_mouse_exited"]
+[connection signal="pressed" from="PauseNode/MainMenuTextureButton" to="PauseNode/MainMenuTextureButton" method="_on_pressed"]
+[connection signal="pressed" from="PauseNode/MainMenuTextureButton" to="PauseNode/MainMenuNode2D" method="_on_main_menu_texture_button_pressed"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cm753tr4kwqax"]
+
+[ext_resource type="Texture2D" uid="uid://c48f8tlgmiio7" path="res://GodotImages/ElevatorDoor1.png" id="1_wuj3i"]
+[ext_resource type="Texture2D" uid="uid://dytqjkluagjrj" path="res://GodotImages/ElevatorDoor2.png" id="2_few10"]
+[ext_resource type="Texture2D" uid="uid://dtgxc0yhe5n7o" path="res://GodotImages/ElevatorDoor3.png" id="3_xikrc"]
+[ext_resource type="Texture2D" uid="uid://ds4w72bxsjnn8" path="res://GodotImages/ElevatorDoor4.png" id="4_gy1jb"]
+[ext_resource type="PackedScene" uid="uid://dny8n8lpmufwo" path="res://level_number_component.tscn" id="5_eb87s"]
+[ext_resource type="Script" path="res://is_closed_component.gd" id="5_qvgu6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2q1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wuj3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_few10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xikrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gy1jb")
+}],
+"loop": false,
+"name": &"closing",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gy1jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xikrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_few10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_wuj3i")
+}],
+"loop": false,
+"name": &"opening",
+"speed": 3.0
+}]
+
+[node name="DoorAnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(580, 527.5)
+scale = Vector2(3.375, 3.28125)
+sprite_frames = SubResource("SpriteFrames_b2q1t")
+animation = &"closing"
+autoplay = "opening"
+
+[node name="IsClosedComponent" type="Node2D" parent="."]
+script = ExtResource("5_qvgu6")
+
+[node name="LevelNumberComponent" parent="." instance=ExtResource("5_eb87s")]

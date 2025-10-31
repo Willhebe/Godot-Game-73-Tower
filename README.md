@@ -1,6 +1,8 @@
 # Play on itch.io
 [current state of game - play on itch.io](https://willhebe.itch.io/towerwildgamjamtest)
 
+Last uploaded to itch.io 30th October 2025 - Link tested 31st October 2025
+
 # Godot Wild Jam 73 - prompt: Tower game
 ## Editing instructions in windows
 1. Install Godot 4.3 - [here](https://godotengine.org/download/archive/4.3-stable/)

@@ -17,3 +17,4 @@
 2. godot project file should be there - select current folder and import project
 
 Followed instructions and they worked 8th October 25
+Followed instructions from Git clone step 2 onwards and they worked October 31st

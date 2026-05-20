@@ -1,6 +1,9 @@
 # Play on itch.io
 [current state of game - play on itch.io](https://willhebe.itch.io/towerwildgamjamtest)
 
+Currently uses testing levels whre only 2 needed items unlock each new level.
+(Non testing version uses 10 - 25 - 50...)
+
 Last uploaded to itch.io 30th October 2025 - Link tested 31st October 2025
 
 # Godot Wild Jam 73 - prompt: Tower game
